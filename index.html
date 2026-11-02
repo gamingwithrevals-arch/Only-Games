@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#070b16" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>OnlyGames</title>
+
+  <!-- Auto-generated Web App Manifest for Phone Installation -->
+  <link rel="manifest" href='data:application/manifest+json,{"name":"OnlyGames","short_name":"OnlyGames","start_url":".","display":"standalone","background_color":"#070b16","theme_color":"#6d9cff","icons":[{"src":"https://fav.farm/🎮","sizes":"192x192","type":"image/png"}]}' />
+
   <style>
     :root {
       --bg: #070b16;
       --text: #eef4ff;
       --muted: #a8b3c7;
-      --glass: rgba(255, 255, 255, 0.08);
-      --glass-strong: rgba(255, 255, 255, 0.14);
-      --line: rgba(255, 255, 255, 0.16);
+      --glass: rgba(15, 23, 42, 0.72);
+      --glass-strong: rgba(30, 41, 59, 0.88);
+      --line: rgba(255, 255, 255, 0.14);
       --blue: #6d9cff;
       --purple: #a855f7;
       --cyan: #22d3ee;
@@ -20,6 +27,7 @@
 
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -32,10 +40,11 @@
       color: var(--text);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(109, 156, 255, 0.34), transparent 34rem),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.28), transparent 32rem),
-        radial-gradient(circle at bottom, rgba(34, 211, 238, 0.16), transparent 28rem),
+        radial-gradient(circle at top left, rgba(109, 156, 255, 0.28), transparent 34rem),
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.24), transparent 32rem),
+        radial-gradient(circle at bottom, rgba(34, 211, 238, 0.14), transparent 28rem),
         var(--bg);
+      padding-bottom: 50px;
     }
 
     body::before {
@@ -44,36 +53,38 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
       background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, black, transparent 78%);
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
     }
 
     a {
       color: inherit;
+      text-decoration: none;
     }
 
     .shell {
-      width: min(1240px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 28px));
       margin: 0 auto;
     }
 
     .glass {
       background: var(--glass);
       border: 1px solid var(--line);
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.32);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
     }
 
+    /* Top Navigation & Search */
     .topbar {
       position: sticky;
-      top: 14px;
-      z-index: 20;
-      margin-top: 14px;
-      border-radius: 24px;
-      padding: 14px;
+      top: 12px;
+      z-index: 30;
+      margin-top: 12px;
+      border-radius: 22px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       gap: 14px;
@@ -82,35 +93,30 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       min-width: max-content;
-      text-decoration: none;
     }
 
     .brand-icon {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       display: grid;
       place-items: center;
-      border-radius: 15px;
+      border-radius: 14px;
       background: linear-gradient(135deg, var(--blue), var(--purple));
-      box-shadow: 0 12px 30px rgba(109, 156, 255, 0.36);
-      font-size: 22px;
-    }
-
-    .brand-text {
-      line-height: 1.05;
+      box-shadow: 0 8px 24px rgba(109, 156, 255, 0.35);
+      font-size: 20px;
     }
 
     .brand-text strong {
       display: block;
       font-size: 18px;
-      letter-spacing: 0.02em;
+      letter-spacing: -0.02em;
     }
 
     .brand-text span {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .search-wrap {
@@ -119,15 +125,10 @@
       align-items: center;
       gap: 10px;
       padding: 0 14px;
-      min-height: 46px;
-      border-radius: 16px;
+      min-height: 44px;
+      border-radius: 14px;
       background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .search-wrap svg {
-      flex: 0 0 auto;
-      opacity: 0.72;
+      border: 1px solid rgba(255, 255, 255, 0.14);
     }
 
     .search {
@@ -137,57 +138,73 @@
       color: var(--text);
       background: transparent;
       font: inherit;
+      font-size: 14px;
     }
 
     .search::placeholder {
       color: #8290aa;
     }
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 18px;
-      margin-top: 22px;
+    .sync-btn {
+      cursor: pointer;
+      border: 1px solid rgba(109, 156, 255, 0.4);
+      background: rgba(109, 156, 255, 0.15);
+      color: #dbeafe;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: 0.2s;
+      white-space: nowrap;
     }
 
-    .hero-main,
-    .hero-side {
-      border-radius: 30px;
-      padding: 28px;
+    .sync-btn:hover {
+      background: rgba(109, 156, 255, 0.28);
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .hero-main, .hero-side {
+      border-radius: 26px;
+      padding: 24px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 11px;
+      padding: 6px 12px;
       border-radius: 999px;
       color: #dbeafe;
       background: rgba(109, 156, 255, 0.14);
-      border: 1px solid rgba(109, 156, 255, 0.26);
-      font-size: 13px;
+      border: 1px solid rgba(109, 156, 255, 0.28);
+      font-size: 12px;
       font-weight: 700;
     }
 
-    .eyebrow::before {
-      content: "";
+    .eyebrow .dot {
       width: 8px;
       height: 8px;
       border-radius: 99px;
       background: var(--green);
-      box-shadow: 0 0 18px var(--green);
+      box-shadow: 0 0 12px var(--green);
     }
 
     h1 {
-      margin: 18px 0 10px;
-      max-width: 780px;
-      font-size: clamp(36px, 6vw, 72px);
-      line-height: 0.95;
-      letter-spacing: -0.06em;
+      margin: 14px 0 8px;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
     }
 
     .gradient-text {
-      background: linear-gradient(90deg, #bfdbfe, #a5b4fc, #f0abfc);
+      background: linear-gradient(90deg, #93c5fd, #c084fc, #f472b6);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -195,665 +212,706 @@
 
     .hero p {
       margin: 0;
-      max-width: 720px;
       color: var(--muted);
-      font-size: 17px;
-      line-height: 1.65;
+      font-size: 15px;
+      line-height: 1.5;
     }
 
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
-      margin-top: 22px;
+      margin-top: 18px;
     }
 
     .stat {
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
     }
 
     .stat strong {
       display: block;
-      font-size: 22px;
+      font-size: 20px;
     }
 
     .stat span {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .hero-side {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 18px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hero-side::after {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      right: -80px;
-      bottom: -90px;
-      border-radius: 999px;
-      background: rgba(168, 85, 247, 0.22);
-      filter: blur(4px);
+      gap: 12px;
     }
 
     .mini-card {
-      position: relative;
-      z-index: 1;
-      padding: 16px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.13);
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .mini-card span {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
     }
 
     .mini-card strong {
       display: block;
-      margin-top: 6px;
-      font-size: 16px;
+      margin-top: 4px;
+      font-size: 14px;
+      color: #e0f2fe;
     }
 
+    /* Sections & Chips */
     .section {
       margin-top: 26px;
     }
 
     .section-head {
       display: flex;
-      align-items: end;
+      align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 14px;
+      flex-wrap: wrap;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: 24px;
-      letter-spacing: -0.03em;
-    }
-
-    .section-head p {
-      margin: 6px 0 0;
-      color: var(--muted);
+      font-size: 22px;
+      letter-spacing: -0.02em;
     }
 
     .chips {
       display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: none;
+    }
+
+    .chips::-webkit-scrollbar {
+      display: none;
     }
 
     .chip {
       cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       color: #dbeafe;
-      background: rgba(255, 255, 255, 0.07);
-      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 8px 14px;
       border-radius: 999px;
-      font: inherit;
+      font-size: 13px;
       font-weight: 700;
-      transition: 0.18s ease;
-    }
-
-    .chip:hover {
-      transform: translateY(-1px);
-      background: rgba(255, 255, 255, 0.12);
+      white-space: nowrap;
+      transition: 0.18s;
     }
 
     .chip.active {
       color: white;
-      border-color: rgba(109, 156, 255, 0.72);
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.72), rgba(147, 51, 234, 0.72));
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.28);
+      border-color: rgba(109, 156, 255, 0.8);
+      background: linear-gradient(135deg, #2563eb, #9333ea);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
     }
 
-    .latest {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
-    }
-
-    .latest-item {
-      min-height: 128px;
-      padding: 14px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .latest-item .date {
-      color: #93c5fd;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .latest-item h3 {
-      margin: 10px 0 8px;
-      font-size: 16px;
-      line-height: 1.2;
-    }
-
-    .latest-item p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
+    /* Cards Grid */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 16px;
     }
 
     .card {
+      cursor: pointer;
       overflow: hidden;
-      border-radius: 26px;
-      background: rgba(255, 255, 255, 0.075);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: rgba(147, 197, 253, 0.46);
-      background: rgba(255, 255, 255, 0.105);
+      border-color: rgba(147, 197, 253, 0.55);
     }
 
     .cover {
       position: relative;
-      display: grid;
-      place-items: center;
-      height: 148px;
+      height: 155px;
+      background: linear-gradient(135deg, #1e293b, #3b0764);
       overflow: hidden;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.32), transparent 9rem),
-        linear-gradient(135deg, rgba(37, 99, 235, 0.88), rgba(147, 51, 234, 0.88));
     }
 
-    .cover::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-      background-size: 24px 24px;
-      opacity: 0.18;
+    .cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
     }
 
-    .cover-letter {
-      position: relative;
-      z-index: 1;
-      font-size: 58px;
-      font-weight: 950;
-      color: white;
-      text-shadow: 0 12px 40px rgba(0, 0, 0, 0.42);
+    .card:hover .cover img {
+      transform: scale(1.05);
     }
 
     .badge {
       position: absolute;
-      top: 12px;
-      left: 12px;
+      top: 10px;
+      left: 10px;
       z-index: 2;
-      padding: 6px 9px;
+      padding: 5px 10px;
       border-radius: 999px;
-      background: rgba(2, 6, 23, 0.54);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: #e0f2fe;
+      background: rgba(2, 6, 23, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #93c5fd;
       font-size: 11px;
-      font-weight: 850;
-      backdrop-filter: blur(10px);
+      font-weight: 800;
+      backdrop-filter: blur(8px);
+    }
+
+    .source-tag {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 2;
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #e2e8f0;
+      font-size: 10px;
+      font-weight: 700;
     }
 
     .content {
-      padding: 16px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .content h3 {
-      margin: 0 0 8px;
-      font-size: 18px;
-      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      font-size: 16px;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 0 0 10px;
       color: var(--muted);
       font-size: 12px;
+      margin-bottom: 12px;
     }
 
-    .desc {
-      min-height: 63px;
-      margin: 0 0 14px;
-      color: #c8d3e8;
-      font-size: 14px;
-      line-height: 1.5;
+    .open-btn {
+      margin-top: auto;
+      width: 100%;
+      padding: 10px;
+      border-radius: 12px;
+      border: 0;
+      color: white;
+      font-weight: 800;
+      font-size: 13px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.85), rgba(147, 51, 234, 0.85));
+      cursor: pointer;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
+    /* Game Detail Modal Overlay */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(3, 7, 18, 0.82);
+      backdrop-filter: blur(12px);
+      display: none;
+      place-items: center;
+      padding: 16px;
+      overflow-y: auto;
     }
 
-    .tag {
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.09);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #dbeafe;
-      font-size: 11px;
-      font-weight: 750;
-    }
-
-    .actions {
+    .modal-backdrop.open {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+    }
+
+    .modal {
+      width: min(760px, 100%);
+      border-radius: 28px;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75);
+      overflow: hidden;
+      animation: popIn 0.2s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      position: relative;
+      height: 240px;
+      background: #1e293b;
+    }
+
+    .modal-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 38px;
+      height: 38px;
+      border-radius: 99px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(2, 6, 23, 0.75);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .modal-body {
+      padding: 22px;
+    }
+
+    .modal-title {
+      margin: 0 0 6px;
+      font-size: 24px;
+    }
+
+    .modal-sub {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .screenshots-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #93c5fd;
+      margin: 16px 0 10px;
+    }
+
+    .screenshots-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
 
-    .button {
-      display: inline-flex;
+    .screenshots-row img {
+      width: 100%;
+      height: 105px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: #1e293b;
+    }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .source-link {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 42px;
+      justify-content: space-between;
+      padding: 12px 14px;
       border-radius: 14px;
-      text-decoration: none;
-      font-weight: 850;
-      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-weight: 700;
+      font-size: 13px;
+      transition: 0.18s;
     }
 
-    .button.primary {
-      color: white;
+    .source-link:hover {
       background: linear-gradient(135deg, #2563eb, #9333ea);
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.28);
+      border-color: transparent;
+      transform: translateY(-2px);
     }
 
-    .button.primary:hover {
-      filter: brightness(1.08);
+    .source-link.direct-hit {
+      border-color: var(--green);
+      background: rgba(52, 211, 153, 0.15);
     }
 
-    .button.secondary {
-      color: #dbeafe;
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.13);
-    }
-
-    .button.secondary:hover {
-      background: rgba(255, 255, 255, 0.13);
-    }
-
-    .empty {
-      padding: 28px;
-      border-radius: 24px;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    footer {
-      margin: 34px 0 24px;
-      padding: 18px;
-      border-radius: 24px;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .latest {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 620px) {
-      .topbar {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .hero-main,
-      .hero-side {
-        padding: 20px;
-      }
-
-      .hero-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .latest {
-        grid-template-columns: 1fr;
-      }
-
-      .section-head {
-        align-items: start;
-        flex-direction: column;
-      }
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; }
+      .screenshots-row { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="shell">
     <header class="topbar glass">
-      <a class="brand" href="#" aria-label="OnlyGames home">
+      <a class="brand" href="#">
         <span class="brand-icon">🎮</span>
         <span class="brand-text">
           <strong>OnlyGames</strong>
-          <span>legal free game discovery</span>
+          <span>Universal Multi-Site Hub</span>
         </span>
       </a>
 
       <label class="search-wrap">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
           <path d="m21 21-4.3-4.3m1.3-4.7a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
-        <input id="searchInput" class="search" type="search" placeholder="Search games, categories, tags..." aria-label="Search games" />
+        <input id="searchInput" class="search" type="search" placeholder="Search any game across all 5 websites..." />
       </label>
+
+      <button id="refreshBtn" class="sync-btn" type="button">↻ Sync Feeds</button>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-main glass">
-          <span class="eyebrow">OnlyGames Catalog</span>
+          <span class="eyebrow"><span class="dot"></span> <span id="syncStatus">Syncing live feeds...</span></span>
           <h1>
-            Discover games in a
-            <span class="gradient-text">glass arcade.</span>
+            All your sites in <span class="gradient-text">OnlyGames.</span>
           </h1>
           <p>
-            Welcome to OnlyGames. Browse legal, official, free, and open-source games all in one spot.
+            Universal live feed & multi-site search connecting GameDrive, SteamGG, AnkerGames, WorldOfPCGames, and SteamRIP.
           </p>
 
           <div class="hero-stats">
             <div class="stat">
               <strong id="gameCount">0</strong>
-              <span>games listed</span>
+              <span>Updates Loaded</span>
             </div>
             <div class="stat">
-              <strong id="categoryCount">0</strong>
-              <span>categories</span>
+              <strong id="categoryCount">6</strong>
+              <span>Categories</span>
             </div>
             <div class="stat">
-              <strong id="sourceCount">0</strong>
-              <span>sources</span>
+              <strong>5</strong>
+              <span>Connected Sites</span>
             </div>
           </div>
         </div>
 
         <aside class="hero-side glass">
           <div class="mini-card">
-            <span>Latest update</span>
-            <strong id="latestGame">Loading...</strong>
+            <span>Latest Feed Drop</span>
+            <strong id="latestGame">Fetching live updates...</strong>
           </div>
           <div class="mini-card">
-            <span>Rule for this project</span>
-            <strong>Redirect only to legal/authorized pages.</strong>
+            <span>Universal Search Mode</span>
+            <strong>Type any game name above to generate multi-site download links & artwork.</strong>
           </div>
         </aside>
       </section>
 
       <section class="section">
         <div class="section-head">
-          <div>
-            <h2>Latest feed</h2>
-            <p>Newest entries in the current catalog data.</p>
-          </div>
-        </div>
-        <div id="latestFeed" class="latest"></div>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <div>
-            <h2>Browse catalog</h2>
-            <p>Search or filter by category.</p>
-          </div>
-          <div id="categoryChips" class="chips" aria-label="Categories"></div>
+          <h2>Universal Feed & Categories</h2>
+          <div id="categoryChips" class="chips"></div>
         </div>
 
         <div id="catalog" class="grid"></div>
-        <div id="emptyState" class="empty glass" hidden>
-          No games found. Try another search or category.
-        </div>
       </section>
     </main>
+  </div>
 
-    <footer class="glass">
-      OnlyGames. Do not use this project to index, promote, or redirect to pirated or unauthorized downloads.
-      Use official stores, free games, demos, open-source releases, or sources you have permission to list.
-    </footer>
+  <!-- Game Page & Multi-Source Download Modal -->
+  <div id="gameModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <img id="modalCover" src="" alt="Game cover" />
+        <button id="closeModalBtn" class="close-btn" type="button">✕</button>
+      </div>
+      <div class="modal-body">
+        <h2 id="modalTitle" class="modal-title">Game Title</h2>
+        <div id="modalMeta" class="modal-sub">Category • Updated Date</div>
+
+        <div class="screenshots-title">Random Game Screenshots</div>
+        <div id="modalScreenshots" class="screenshots-row"></div>
+
+        <div class="screenshots-title">Choose Download Website</div>
+        <div id="modalSources" class="sources-grid"></div>
+      </div>
+    </div>
   </div>
 
   <script>
-    const games = [
+    // Your 5 Connected Websites
+    const SITES = [
       {
-        title: "Free Games Demo Entry",
-        category: "Free",
-        source: "itch.io",
-        sourceUrl: "https://itch.io/games/free",
-        downloadUrl: "https://itch.io/games/free",
-        version: "demo",
-        updated: "2026-11-02",
-        size: "varies",
-        tags: ["free", "legal", "indie"],
-        description: "Demo entry. Replace with a real legal free game listing."
+        name: "GameDrive",
+        feed: "https://gamedrive.org/feed/",
+        searchUrl: q => `https://gamedrive.org/?s=${encodeURIComponent(q)}`
       },
       {
-        title: "Open Source Games Demo Entry",
-        category: "Open Source",
-        source: "GitHub",
-        sourceUrl: "https://github.com/topics/open-source-game",
-        downloadUrl: "https://github.com/topics/open-source-game",
-        version: "demo",
-        updated: "2026-11-01",
-        size: "varies",
-        tags: ["open-source", "github", "legal"],
-        description: "Demo entry. Replace with a real open-source game release."
+        name: "SteamGG",
+        feed: "https://steamgg.net/feed/",
+        searchUrl: q => `https://steamgg.net/?s=${encodeURIComponent(q)}`
       },
       {
-        title: "Indie Demo Entry",
-        category: "Indie",
-        source: "Official demo",
-        sourceUrl: "https://example.com/legal-demo",
-        downloadUrl: "https://example.com/legal-demo",
-        version: "demo",
-        updated: "2026-10-30",
-        size: "varies",
-        tags: ["demo", "official"],
-        description: "Demo entry. Replace with an official demo or free game page."
+        name: "AnkerGames",
+        feed: "https://ankergames.net/feed/",
+        searchUrl: q => `https://ankergames.net/search?q=${encodeURIComponent(q)}`
+      },
+      {
+        name: "WorldOfPCGames",
+        feed: "https://worldofpcgames.com/feed/",
+        searchUrl: q => `https://worldofpcgames.com/?s=${encodeURIComponent(q)}`
+      },
+      {
+        name: "SteamRIP",
+        feed: "https://steamrip.com/feed/",
+        searchUrl: q => `https://steamrip.com/?s=${encodeURIComponent(q)}`
       }
     ];
 
-    const state = {
-      category: "All",
-      query: ""
-    };
+    const UNIVERSAL_CATEGORIES = ["All", "Action", "RPG", "Open World", "Horror", "Sci-Fi", "Updates"];
+
+    // Curated fallback + starter games while live RSS feeds sync
+    const fallbackGames = [
+      { title: "Cyberpunk 2077: Ultimate Edition", category: "RPG", source: "SteamRIP", updated: "Latest Release", directUrl: "https://steamrip.com/?s=Cyberpunk+2077" },
+      { title: "Grand Theft Auto V (v1.68)", category: "Open World", source: "GameDrive", updated: "Latest Release", directUrl: "https://gamedrive.org/?s=GTA+V" },
+      { title: "Silent Hill 2 Remake", category: "Horror", source: "SteamGG", updated: "Latest Release", directUrl: "https://steamgg.net/?s=Silent+Hill+2" },
+      { title: "God of War Ragnarök", category: "Action", source: "AnkerGames", updated: "Latest Release", directUrl: "https://ankergames.net/search?q=God+of+War" },
+      { title: "Ghostrunner 2", category: "Sci-Fi", source: "WorldOfPCGames", updated: "Latest Release", directUrl: "https://worldofpcgames.com/?s=Ghostrunner+2" },
+      { title: "The Witcher 3: Wild Hunt Complete", category: "RPG", source: "GameDrive", updated: "Latest Release", directUrl: "https://gamedrive.org/?s=Witcher+3" },
+      { title: "Resident Evil 4 Remake", category: "Horror", source: "SteamRIP", updated: "Latest Release", directUrl: "https://steamrip.com/?s=Resident+Evil+4" },
+      { title: "Elden Ring: Shadow of the Erdtree", category: "RPG", source: "SteamGG", updated: "Latest Release", directUrl: "https://steamgg.net/?s=Elden+Ring" }
+    ];
+
+    let allGames = [...fallbackGames];
+    let state = { category: "All", query: "" };
+    const imageCache = {};
 
     const catalog = document.getElementById("catalog");
-    const latestFeed = document.getElementById("latestFeed");
     const categoryChips = document.getElementById("categoryChips");
     const searchInput = document.getElementById("searchInput");
-    const emptyState = document.getElementById("emptyState");
-
+    const syncStatus = document.getElementById("syncStatus");
     const gameCount = document.getElementById("gameCount");
-    const categoryCount = document.getElementById("categoryCount");
-    const sourceCount = document.getElementById("sourceCount");
     const latestGame = document.getElementById("latestGame");
 
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+    // Clean up messy repack/version titles so image search finds the exact game
+    function cleanGameTitle(rawTitle) {
+      return rawTitle
+        .replace(/\(.*?\)|\[.*?\]/g, "")
+        .replace(/v\d+(\.\d+)*|Build \d+|Free Download|Repack|Pre-Installed|FitGirl|DODI|SteamRIP/gi, "")
+        .split(/[-–—:|]/)[0]
+        .trim();
     }
 
-    function firstLetter(title) {
-      return escapeHtml((title || "?").trim().charAt(0).toUpperCase() || "?");
+    // Guess a universal category from title keywords
+    function detectCategory(title) {
+      const t = title.toLowerCase();
+      if (t.includes("resident evil") || t.includes("silent hill") || t.includes("horror") || t.includes("evil") || t.includes("outlast")) return "Horror";
+      if (t.includes("witcher") || t.includes("rpg") || t.includes("final fantasy") || t.includes("elden") || t.includes("dragon") || t.includes("tales of")) return "RPG";
+      if (t.includes("cyberpunk") || t.includes("space") || t.includes("halo") || t.includes("ghostrunner") || t.includes("star") || t.includes("metro")) return "Sci-Fi";
+      if (t.includes("gta") || t.includes("grand theft") || t.includes("assassin") || t.includes("far cry") || t.includes("red dead") || t.includes("horizon")) return "Open World";
+      if (t.includes("update") || t.includes("patch") || t.includes("hotfix")) return "Updates";
+      return "Action";
     }
 
-    function unique(list) {
-      return [...new Set(list.filter(Boolean))];
+    // Fetch real game cover & screenshots using public Steam/CheapShark/Wikipedia APIs
+    async function fetchGameImages(rawTitle) {
+      const clean = cleanGameTitle(rawTitle) || rawTitle;
+      if (imageCache[clean]) return imageCache[clean];
+
+      let cover = `https://picsum.photos/seed/${encodeURIComponent(clean)}/600/350`;
+      let shots = [
+        `https://picsum.photos/seed/${encodeURIComponent(clean + "1")}/500/300`,
+        `https://picsum.photos/seed/${encodeURIComponent(clean + "2")}/500/300`,
+        `https://picsum.photos/seed/${encodeURIComponent(clean + "3")}/500/300`
+      ];
+
+      try {
+        const res = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(clean)}&limit=3`);
+        const data = await res.json();
+        if (data && data.length > 0) {
+          const steamAppId = data[0].steamAppID;
+          if (steamAppId) {
+            cover = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamAppId}/header.jpg`;
+            shots = [
+              `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamAppId}/capsule_616x353.jpg`,
+              `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamAppId}/header.jpg`,
+              data[0].thumb || cover
+            ];
+          } else if (data[0].thumb) {
+            cover = data[0].thumb;
+          }
+        }
+      } catch (e) {
+        // Fallback images stay active if offline
+      }
+
+      imageCache[clean] = { cover, shots };
+      return imageCache[clean];
     }
 
-    function sortByUpdatedDesc(list) {
-      return [...list].sort((a, b) => new Date(b.updated) - new Date(a.updated));
-    }
+    // Pull live RSS feeds from all 5 sites via rss2json CORS proxy
+    async function syncLiveFeeds() {
+      syncStatus.textContent = "Syncing 5 websites...";
+      const fetched = [];
 
-    function tagHtml(tags) {
-      return (tags || [])
-        .map(tag => `<span class="tag">${escapeHtml(tag)}</span>`)
-        .join("");
-    }
+      await Promise.allSettled(
+        SITES.map(async site => {
+          try {
+            const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(site.feed)}`;
+            const res = await fetch(proxyUrl);
+            const data = await res.json();
+            if (data && Array.isArray(data.items)) {
+              data.items.slice(0, 6).forEach(item => {
+                fetched.push({
+                  title: item.title,
+                  category: detectCategory(item.title),
+                  source: site.name,
+                  updated: (item.pubDate || "").split(" ")[0] || "New",
+                  directUrl: item.link,
+                  thumb: item.thumbnail || ""
+                });
+              });
+            }
+          } catch (err) {
+            console.warn("Feed sync skipped for", site.name);
+          }
+        })
+      );
 
-    function cardHtml(game) {
-      return `
-        <article class="card">
-          <div class="cover">
-            <span class="badge">${escapeHtml(game.category)}</span>
-            <span class="cover-letter">${firstLetter(game.title)}</span>
-          </div>
+      if (fetched.length > 0) {
+        allGames = [...fetched, ...fallbackGames];
+        syncStatus.textContent = `Live • ${fetched.length} new drops synced`;
+      } else {
+        syncStatus.textContent = "Universal Catalog Ready";
+      }
 
-          <div class="content">
-            <h3>${escapeHtml(game.title)}</h3>
-            <div class="meta">
-              <span>${escapeHtml(game.source)}</span>
-              <span>•</span>
-              <span>v${escapeHtml(game.version)}</span>
-              <span>•</span>
-              <span>${escapeHtml(game.updated)}</span>
-            </div>
-            <p class="desc">${escapeHtml(game.description)}</p>
-            <div class="tags">${tagHtml(game.tags)}</div>
-
-            <div class="actions">
-              <a
-                class="button secondary"
-                href="${escapeHtml(game.sourceUrl)}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Source
-              </a>
-              <a
-                class="button primary"
-                href="${escapeHtml(game.downloadUrl)}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Get game
-              </a>
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
-    function latestItemHtml(game) {
-      return `
-        <article class="latest-item">
-          <div class="date">${escapeHtml(game.updated)}</div>
-          <h3>${escapeHtml(game.title)}</h3>
-          <p>${escapeHtml(game.category)} · ${escapeHtml(game.source)}</p>
-        </article>
-      `;
-    }
-
-    function categories() {
-      return ["All", ...unique(games.map(game => game.category))];
+      renderAll();
     }
 
     function renderChips() {
-      categoryChips.innerHTML = categories()
-        .map(category => `
-          <button
-            class="chip ${state.category === category ? "active" : ""}"
-            type="button"
-            data-category="${escapeHtml(category)}"
-          >
-            ${escapeHtml(category)}
-          </button>
-        `)
-        .join("");
+      categoryChips.innerHTML = UNIVERSAL_CATEGORIES.map(cat => `
+        <button class="chip ${state.category === cat ? "active" : ""}" data-cat="${cat}">
+          ${cat}
+        </button>
+      `).join("");
     }
 
-    function filteredGames() {
-      const query = state.query.toLowerCase().trim();
+    function getFilteredGames() {
+      const q = state.query.trim().toLowerCase();
 
-      return sortByUpdatedDesc(games).filter(game => {
-        const matchesCategory = state.category === "All" || game.category === state.category;
+      const matches = allGames.filter(g => {
+        const catMatch = state.category === "All" || g.category === state.category;
+        const queryMatch = !q || g.title.toLowerCase().includes(q) || g.source.toLowerCase().includes(q);
+        return catMatch && queryMatch;
+      });
 
-        const searchable = [
-          game.title,
-          game.category,
-          game.source,
-          game.description,
-          ...(game.tags || [])
-        ].join(" ").toLowerCase();
+      // If the user searches for ANY game not currently in the feed, generate a Universal Search Card automatically!
+      if (q && matches.length === 0) {
+        return [{
+          title: state.query.trim(),
+          category: detectCategory(state.query),
+          source: "All 5 Websites",
+          updated: "Universal Search",
+          directUrl: ""
+        }];
+      }
 
-        const matchesQuery = !query || searchable.includes(query);
+      return matches;
+    }
 
-        return matchesCategory && matchesQuery;
+    async function renderCatalog() {
+      const list = getFilteredGames();
+      gameCount.textContent = allGames.length;
+      latestGame.textContent = allGames[0] ? allGames[0].title : "Ready";
+
+      catalog.innerHTML = list.map((g, idx) => `
+        <article class="card" data-index="${idx}">
+          <div class="cover">
+            <span class="badge">${g.category}</span>
+            <span class="source-tag">${g.source}</span>
+            <img id="img-${idx}" src="${g.thumb || `https://picsum.photos/seed/${encodeURIComponent(g.title)}/600/350`}" alt="${g.title}" loading="lazy" />
+          </div>
+          <div class="content">
+            <h3>${g.title}</h3>
+            <div class="meta">Updated: ${g.updated}</div>
+            <button class="open-btn" type="button">View Game & Downloads</button>
+          </div>
+        </article>
+      `).join("");
+
+      // Upgrade card images with real game covers asynchronously
+      list.forEach(async (g, idx) => {
+        if (!g.thumb) {
+          const imgs = await fetchGameImages(g.title);
+          const imgEl = document.getElementById(`img-${idx}`);
+          if (imgEl && imgs.cover) imgEl.src = imgs.cover;
+        }
+      });
+
+      // Attach click events to open the Game Page Modal
+      catalog.querySelectorAll(".card").forEach((cardEl, idx) => {
+        cardEl.addEventListener("click", () => openGameModal(list[idx]));
       });
     }
 
-    function renderStats() {
-      const sorted = sortByUpdatedDesc(games);
-      gameCount.textContent = games.length;
-      categoryCount.textContent = unique(games.map(game => game.category)).length;
-      sourceCount.textContent = unique(games.map(game => game.source)).length;
-      latestGame.textContent = sorted[0] ? sorted[0].title : "No games yet";
-    }
+    async function openGameModal(game) {
+      const modal = document.getElementById("gameModal");
+      const modalCover = document.getElementById("modalCover");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalMeta = document.getElementById("modalMeta");
+      const modalScreenshots = document.getElementById("modalScreenshots");
+      const modalSources = document.getElementById("modalSources");
 
-    function renderLatest() {
-      latestFeed.innerHTML = sortByUpdatedDesc(games)
-        .slice(0, 5)
-        .map(latestItemHtml)
+      const cleanName = cleanGameTitle(game.title) || game.title;
+      modalTitle.textContent = game.title;
+      modalMeta.textContent = `${game.category} • Spotted on ${game.source} • ${game.updated}`;
+
+      const imgs = await fetchGameImages(game.title);
+      modalCover.src = game.thumb || imgs.cover;
+
+      modalScreenshots.innerHTML = imgs.shots
+        .map(src => `<img src="${src}" alt="Screenshot" loading="lazy" />`)
         .join("");
-    }
 
-    function renderCatalog() {
-      const list = filteredGames();
-      catalog.innerHTML = list.map(cardHtml).join("");
-      emptyState.hidden = list.length > 0;
+      // Populate multi-website download buttons
+      modalSources.innerHTML = SITES.map(site => {
+        const isDirectSite = site.name === game.source && game.directUrl;
+        const targetUrl = isDirectSite ? game.directUrl : site.searchUrl(cleanName);
+        return `
+          <a class="source-link ${isDirectSite ? "direct-hit" : ""}" href="${targetUrl}" target="_blank" rel="noopener noreferrer">
+            <span>${site.name} ${isDirectSite ? "⚡" : ""}</span>
+            <span>Download ↗</span>
+          </a>
+        `;
+      }).join("");
+
+      modal.classList.add("open");
     }
 
     function renderAll() {
-      renderStats();
-      renderLatest();
       renderChips();
       renderCatalog();
     }
 
-    categoryChips.addEventListener("click", event => {
-      const button = event.target.closest("[data-category]");
-      if (!button) return;
-
-      state.category = button.dataset.category;
-      renderChips();
-      renderCatalog();
+    categoryChips.addEventListener("click", e => {
+      const btn = e.target.closest("[data-cat]");
+      if (!btn) return;
+      state.category = btn.dataset.cat;
+      renderAll();
     });
 
     searchInput.addEventListener("input", () => {
@@ -861,7 +919,16 @@
       renderCatalog();
     });
 
+    document.getElementById("refreshBtn").addEventListener("click", syncLiveFeeds);
+    document.getElementById("closeModalBtn").addEventListener("click", () => {
+      document.getElementById("gameModal").classList.remove("open");
+    });
+    document.getElementById("gameModal").addEventListener("click", e => {
+      if (e.target.id === "gameModal") e.target.classList.remove("open");
+    });
+
     renderAll();
+    syncLiveFeeds();
   </script>
 </body>
 </html>
