@@ -2,933 +2,1022 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <meta name="theme-color" content="#070b16" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <title>OnlyGames</title>
-
-  <!-- Auto-generated Web App Manifest for Phone Installation -->
-  <link rel="manifest" href='data:application/manifest+json,{"name":"OnlyGames","short_name":"OnlyGames","start_url":".","display":"standalone","background_color":"#070b16","theme_color":"#6d9cff","icons":[{"src":"https://fav.farm/🎮","sizes":"192x192","type":"image/png"}]}' />
-
   <style>
     :root {
-      --bg: #070b16;
-      --text: #eef4ff;
-      --muted: #a8b3c7;
-      --glass: rgba(15, 23, 42, 0.72);
-      --glass-strong: rgba(30, 41, 59, 0.88);
-      --line: rgba(255, 255, 255, 0.14);
-      --blue: #6d9cff;
-      --purple: #a855f7;
-      --cyan: #22d3ee;
-      --green: #34d399;
+      --bg: #000000;
+      --card: #1c1c1e;
+      --card-elevated: #2c2c2e;
+      --text: #ffffff;
+      --muted: #8e8e93;
+      --blue: #0a84ff;
+      --green: #30d158;
+      --pink: #ff375f;
+      --purple: #bf5af2;
+      --line: rgba(255, 255, 255, 0.1);
+      --blur: rgba(28, 28, 30, 0.78);
     }
 
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      user-select: none;
     }
 
     body {
       margin: 0;
-      min-height: 100vh;
+      background: var(--bg);
       color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(109, 156, 255, 0.28), transparent 34rem),
-        radial-gradient(circle at top right, rgba(168, 85, 247, 0.24), transparent 32rem),
-        radial-gradient(circle at bottom, rgba(34, 211, 238, 0.14), transparent 28rem),
-        var(--bg);
-      padding-bottom: 50px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+      padding-bottom: 95px;
+      overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .shell {
-      width: min(1240px, calc(100% - 28px));
-      margin: 0 auto;
-    }
-
-    .glass {
-      background: var(--glass);
-      border: 1px solid var(--line);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    /* Top Navigation & Search */
-    .topbar {
+    /* Apple Style Top Header */
+    .ios-header {
       position: sticky;
-      top: 12px;
+      top: 0;
       z-index: 30;
-      margin-top: 12px;
-      border-radius: 22px;
-      padding: 12px 16px;
+      padding: 18px 20px 12px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-bottom: 0.5px solid var(--line);
       display: flex;
-      align-items: center;
-      gap: 14px;
+      justify-content: space-between;
+      align-items: flex-end;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: max-content;
-    }
-
-    .brand-icon {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      box-shadow: 0 8px 24px rgba(109, 156, 255, 0.35);
-      font-size: 20px;
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 18px;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-text span {
+    .ios-date {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
       color: var(--muted);
-      font-size: 11px;
+      letter-spacing: 0.04em;
     }
 
-    .search-wrap {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 14px;
-      min-height: 44px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+    .ios-title {
+      margin: 2px 0 0;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
-    .search {
-      width: 100%;
+    .sync-pill {
+      background: var(--card-elevated);
+      color: var(--blue);
       border: 0;
-      outline: 0;
-      color: var(--text);
-      background: transparent;
-      font: inherit;
-      font-size: 14px;
-    }
-
-    .search::placeholder {
-      color: #8290aa;
-    }
-
-    .sync-btn {
-      cursor: pointer;
-      border: 1px solid rgba(109, 156, 255, 0.4);
-      background: rgba(109, 156, 255, 0.15);
-      color: #dbeafe;
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 13px;
-      transition: 0.2s;
-      white-space: nowrap;
-    }
-
-    .sync-btn:hover {
-      background: rgba(109, 156, 255, 0.28);
-    }
-
-    /* Hero Section */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    .hero-main, .hero-side {
-      border-radius: 26px;
-      padding: 24px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      color: #dbeafe;
-      background: rgba(109, 156, 255, 0.14);
-      border: 1px solid rgba(109, 156, 255, 0.28);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .eyebrow .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 99px;
-      background: var(--green);
-      box-shadow: 0 0 12px var(--green);
-    }
-
-    h1 {
-      margin: 14px 0 8px;
-      font-size: clamp(30px, 5vw, 54px);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #93c5fd, #c084fc, #f472b6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .stat {
-      padding: 12px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 20px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .hero-side {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .mini-card {
-      padding: 14px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .mini-card span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .mini-card strong {
-      display: block;
-      margin-top: 4px;
-      font-size: 14px;
-      color: #e0f2fe;
-    }
-
-    /* Sections & Chips */
-    .section {
-      margin-top: 26px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      font-size: 22px;
-      letter-spacing: -0.02em;
-    }
-
-    .chips {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 6px;
-      scrollbar-width: none;
-    }
-
-    .chips::-webkit-scrollbar {
-      display: none;
-    }
-
-    .chip {
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #dbeafe;
-      background: rgba(255, 255, 255, 0.06);
       padding: 8px 14px;
       border-radius: 999px;
       font-size: 13px;
       font-weight: 700;
-      white-space: nowrap;
-      transition: 0.18s;
-    }
-
-    .chip.active {
-      color: white;
-      border-color: rgba(109, 156, 255, 0.8);
-      background: linear-gradient(135deg, #2563eb, #9333ea);
-      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
-    }
-
-    /* Cards Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
       cursor: pointer;
-      overflow: hidden;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      transition: transform 0.2s ease, border-color 0.2s ease;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 6px;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(147, 197, 253, 0.55);
+    .container {
+      padding: 16px 20px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .cover {
+    /* Tab Views */
+    .tab-view {
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+    .tab-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Featured Hero Card (Apple Today Style) */
+    .hero-card {
       position: relative;
-      height: 155px;
-      background: linear-gradient(135deg, #1e293b, #3b0764);
+      height: 360px;
+      border-radius: 24px;
       overflow: hidden;
+      background: var(--card);
+      margin-bottom: 28px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+      cursor: pointer;
     }
 
-    .cover img {
+    .hero-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
     }
 
-    .card:hover .cover img {
-      transform: scale(1.05);
-    }
-
-    .badge {
+    .hero-overlay {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 2;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(2, 6, 23, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #93c5fd;
-      font-size: 11px;
-      font-weight: 800;
-      backdrop-filter: blur(8px);
-    }
-
-    .source-tag {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      z-index: 2;
-      padding: 4px 8px;
-      border-radius: 8px;
-      background: rgba(15, 23, 42, 0.85);
-      color: #e2e8f0;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .content {
-      padding: 15px;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.92) 12%, rgba(0,0,0,0.2) 60%, transparent);
+      padding: 22px;
       display: flex;
       flex-direction: column;
-      flex: 1;
+      justify-content: flex-end;
     }
 
-    .content h3 {
-      margin: 0 0 6px;
-      font-size: 16px;
-      line-height: 1.3;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .hero-tag {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--blue);
+      letter-spacing: 0.08em;
     }
 
-    .meta {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 12px;
+    .hero-overlay h2 {
+      margin: 4px 0 6px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
-    .open-btn {
-      margin-top: auto;
-      width: 100%;
+    .hero-overlay p {
+      margin: 0;
+      color: #d1d1d6;
+      font-size: 14px;
+    }
+
+    /* Section Headers */
+    .section-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 22px 0 12px;
+      padding-top: 12px;
+      border-top: 0.5px solid var(--line);
+    }
+
+    .section-bar h3 {
+      margin: 0;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-bar span {
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* App Store List Rows */
+    .app-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+
+    .app-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       padding: 10px;
-      border-radius: 12px;
+      border-radius: 18px;
+      background: var(--card);
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .app-row:active {
+      transform: scale(0.98);
+      background: var(--card-elevated);
+    }
+
+    .app-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 16px;
+      object-fit: cover;
+      background: #2c2c2e;
+      flex-shrink: 0;
+      border: 0.5px solid rgba(255,255,255,0.12);
+    }
+
+    .app-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-info h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .app-info p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .get-btn {
+      background: var(--card-elevated);
+      color: var(--blue);
       border: 0;
-      color: white;
+      padding: 7px 18px;
+      border-radius: 999px;
       font-weight: 800;
       font-size: 13px;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.85), rgba(147, 51, 234, 0.85));
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    /* Genre Grid (Apple Categories Tab) */
+    .genre-pills {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      scrollbar-width: none;
+    }
+    .genre-pills::-webkit-scrollbar { display: none; }
+
+    .genre-pill {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
       cursor: pointer;
     }
 
-    /* Game Detail Modal Overlay */
-    .modal-backdrop {
+    .genre-pill.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .genre-pill.adult-pill.active {
+      background: var(--pink);
+      border-color: var(--pink);
+    }
+
+    /* Search Bar */
+    .ios-search-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--card);
+      padding: 12px 16px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    .ios-search-box input {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    /* Settings List */
+    .settings-group {
+      background: var(--card);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .settings-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      border-bottom: 0.5px solid var(--line);
+    }
+
+    .settings-item:last-child {
+      border-bottom: 0;
+    }
+
+    .settings-item strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .settings-item span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* iOS Toggle Switch */
+    .switch {
+      position: relative;
+      width: 50px;
+      height: 30px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #39393d;
+      transition: 0.25s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.25s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--green);
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Fullscreen iOS Game Detail Modal Sheet */
+    .sheet-backdrop {
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: rgba(3, 7, 18, 0.82);
-      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(16px);
       display: none;
-      place-items: center;
-      padding: 16px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .sheet-backdrop.open {
+      display: flex;
+    }
+
+    .sheet {
+      width: min(720px, 100%);
+      height: 90vh;
+      background: #121214;
+      border-radius: 28px 28px 0 0;
       overflow-y: auto;
-    }
-
-    .modal-backdrop.open {
-      display: grid;
-    }
-
-    .modal {
-      width: min(760px, 100%);
-      border-radius: 28px;
-      background: #0f172a;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75);
-      overflow: hidden;
-      animation: popIn 0.2s ease;
-    }
-
-    @keyframes popIn {
-      from { transform: scale(0.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .modal-header {
+      padding-bottom: 40px;
+      animation: slideUp 0.26s cubic-bezier(0.2, 0.9, 0.3, 1);
       position: relative;
-      height: 240px;
-      background: #1e293b;
     }
 
-    .modal-header img {
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .sheet-banner {
+      position: relative;
+      height: 230px;
+      background: #1c1c1e;
+    }
+
+    .sheet-banner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .close-btn {
+    .sheet-close {
       position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 38px;
-      height: 38px;
-      border-radius: 99px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background: rgba(2, 6, 23, 0.75);
-      color: white;
-      font-size: 18px;
+      top: 16px;
+      right: 16px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(28, 28, 30, 0.85);
+      color: #fff;
+      border: 0;
+      font-size: 16px;
+      font-weight: 800;
       cursor: pointer;
-      display: grid;
-      place-items: center;
     }
 
-    .modal-body {
-      padding: 22px;
+    .sheet-body {
+      padding: 20px;
     }
 
-    .modal-title {
+    .sheet-top {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .sheet-icon {
+      width: 82px;
+      height: 82px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+
+    .sheet-title-wrap h2 {
       margin: 0 0 6px;
-      font-size: 24px;
+      font-size: 22px;
     }
 
-    .modal-sub {
+    .sheet-title-wrap p {
+      margin: 0;
       color: var(--muted);
       font-size: 13px;
-      margin-bottom: 16px;
     }
 
-    .screenshots-title {
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #93c5fd;
-      margin: 16px 0 10px;
-    }
-
-    .screenshots-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .screenshots-row img {
-      width: 100%;
-      height: 105px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: #1e293b;
-    }
-
-    .sources-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .source-link {
+    .shots-scroll {
       display: flex;
-      align-items: center;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .shots-scroll::-webkit-scrollbar { display: none; }
+
+    .shots-scroll img {
+      width: 250px;
+      height: 142px;
+      object-fit: cover;
+      border-radius: 16px;
+      flex-shrink: 0;
+      background: var(--card);
+      border: 0.5px solid var(--line);
+    }
+
+    .dl-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .dl-btn {
+      display: flex;
       justify-content: space-between;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      align-items: center;
+      padding: 15px 18px;
+      border-radius: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 15px;
       font-weight: 700;
-      font-size: 13px;
-      transition: 0.18s;
+      cursor: pointer;
+      width: 100%;
+      text-align: left;
     }
 
-    .source-link:hover {
-      background: linear-gradient(135deg, #2563eb, #9333ea);
-      border-color: transparent;
-      transform: translateY(-2px);
+    .dl-btn.matched {
+      border-color: var(--blue);
+      background: rgba(10, 132, 255, 0.16);
     }
 
-    .source-link.direct-hit {
-      border-color: var(--green);
-      background: rgba(52, 211, 153, 0.15);
+    .dl-btn span.badge-pill {
+      background: var(--blue);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
     }
 
-    @media (max-width: 820px) {
-      .hero { grid-template-columns: 1fr; }
-      .screenshots-row { grid-template-columns: 1fr 1fr; }
+    /* Bottom iOS Tab Bar */
+    .ios-tabbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 74px;
+      background: var(--blur);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-top: 0.5px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 50;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .tab-item {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .tab-item.active {
+      color: var(--blue);
+    }
+
+    .tab-item span.icon {
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header class="topbar glass">
-      <a class="brand" href="#">
-        <span class="brand-icon">🎮</span>
-        <span class="brand-text">
-          <strong>OnlyGames</strong>
-          <span>Universal Multi-Site Hub</span>
-        </span>
-      </a>
 
-      <label class="search-wrap">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="m21 21-4.3-4.3m1.3-4.7a6 6 0 1 1-12 0 6 6 0 0 1 12 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <input id="searchInput" class="search" type="search" placeholder="Search any game across all 5 websites..." />
-      </label>
+  <!-- Top Apple Header -->
+  <header class="ios-header">
+    <div>
+      <div id="headerSubtitle" class="ios-date">UNIVERSAL GAME STORE</div>
+      <h1 id="headerTitle" class="ios-title">Today</h1>
+    </div>
+    <button id="syncBtn" class="sync-pill" type="button">↻ Sync Live</button>
+  </header>
 
-      <button id="refreshBtn" class="sync-btn" type="button">↻ Sync Feeds</button>
-    </header>
+  <main class="container">
+    <!-- TAB 1: TODAY (LATEST FEED) -->
+    <section id="tab-today" class="tab-view active">
+      <div id="heroSpot"></div>
 
-    <main>
-      <section class="hero">
-        <div class="hero-main glass">
-          <span class="eyebrow"><span class="dot"></span> <span id="syncStatus">Syncing live feeds...</span></span>
-          <h1>
-            All your sites in <span class="gradient-text">OnlyGames.</span>
-          </h1>
-          <p>
-            Universal live feed & multi-site search connecting GameDrive, SteamGG, AnkerGames, WorldOfPCGames, and SteamRIP.
-          </p>
-
-          <div class="hero-stats">
-            <div class="stat">
-              <strong id="gameCount">0</strong>
-              <span>Updates Loaded</span>
-            </div>
-            <div class="stat">
-              <strong id="categoryCount">6</strong>
-              <span>Categories</span>
-            </div>
-            <div class="stat">
-              <strong>5</strong>
-              <span>Connected Sites</span>
-            </div>
-          </div>
-        </div>
-
-        <aside class="hero-side glass">
-          <div class="mini-card">
-            <span>Latest Feed Drop</span>
-            <strong id="latestGame">Fetching live updates...</strong>
-          </div>
-          <div class="mini-card">
-            <span>Universal Search Mode</span>
-            <strong>Type any game name above to generate multi-site download links & artwork.</strong>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section">
-        <div class="section-head">
-          <h2>Universal Feed & Categories</h2>
-          <div id="categoryChips" class="chips"></div>
-        </div>
-
-        <div id="catalog" class="grid"></div>
-      </section>
-    </main>
-  </div>
-
-  <!-- Game Page & Multi-Source Download Modal -->
-  <div id="gameModal" class="modal-backdrop">
-    <div class="modal">
-      <div class="modal-header">
-        <img id="modalCover" src="" alt="Game cover" />
-        <button id="closeModalBtn" class="close-btn" type="button">✕</button>
+      <div class="section-bar">
+        <h3>Latest Multi-Site Drops</h3>
+        <span id="feedStatus">Live Merged Feed</span>
       </div>
-      <div class="modal-body">
-        <h2 id="modalTitle" class="modal-title">Game Title</h2>
-        <div id="modalMeta" class="modal-sub">Category • Updated Date</div>
+      <div id="latestList" class="app-list"></div>
+    </section>
 
-        <div class="screenshots-title">Random Game Screenshots</div>
-        <div id="modalScreenshots" class="screenshots-row"></div>
+    <!-- TAB 2: CATEGORIES (ALL GENRES + ADULT) -->
+    <section id="tab-categories" class="tab-view">
+      <div id="genreBar" class="genre-pills"></div>
+      <div class="section-bar">
+        <h3 id="selectedGenreTitle">All Genres</h3>
+        <span id="genreCount">0 Games</span>
+      </div>
+      <div id="categoryList" class="app-list"></div>
+    </section>
 
-        <div class="screenshots-title">Choose Download Website</div>
-        <div id="modalSources" class="sources-grid"></div>
+    <!-- TAB 3: UNIVERSAL SEARCH -->
+    <section id="tab-search" class="tab-view">
+      <div class="ios-search-box">
+        <span>🔍</span>
+        <input id="searchInput" type="search" placeholder="Search any game across all 5 websites..." />
+      </div>
+      <div class="section-bar">
+        <h3>Universal Results</h3>
+        <span>Multi-Server</span>
+      </div>
+      <div id="searchList" class="app-list"></div>
+    </section>
+
+    <!-- TAB 4: SETTINGS & GENRE CONTROLS -->
+    <section id="tab-settings" class="tab-view">
+      <div class="section-bar" style="border-top:0; margin-top:0;">
+        <h3>Content & Genre Settings</h3>
+      </div>
+      <div class="settings-group">
+        <div class="settings-item">
+          <div>
+            <strong>Show Adult (18+ / NSFW) Genre</strong>
+            <span>Enable 18+ games in Categories & Search</span>
+          </div>
+          <label class="switch">
+            <input id="adultToggle" type="checkbox" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+        <div class="settings-item">
+          <div>
+            <strong>External Phone Browser Redirect</strong>
+            <span>Always launch downloads in default browser</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked disabled />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="section-bar">
+        <h3>Connected Websites (5 Active)</h3>
+      </div>
+      <div id="siteToggles" class="settings-group"></div>
+    </section>
+  </main>
+
+  <!-- GAME DETAIL SHEET (APPLE STORE MODAL) -->
+  <div id="gameSheet" class="sheet-backdrop">
+    <div class="sheet">
+      <div class="sheet-banner">
+        <img id="sheetBanner" src="" alt="Banner" />
+        <button id="closeSheetBtn" class="sheet-close" type="button">✕</button>
+      </div>
+      <div class="sheet-body">
+        <div class="sheet-top">
+          <img id="sheetIcon" class="sheet-icon" src="" alt="Icon" />
+          <div class="sheet-title-wrap">
+            <h2 id="sheetTitle">Game Name</h2>
+            <p id="sheetMeta">Genre • Updated</p>
+          </div>
+        </div>
+
+        <div class="section-bar">
+          <h3>Preview Screenshots</h3>
+          <span>Auto-Fetched HD</span>
+        </div>
+        <div id="sheetShots" class="shots-scroll"></div>
+
+        <div class="section-bar">
+          <h3>Choose Download Website</h3>
+          <span>Opens in Phone Browser ↗</span>
+        </div>
+        <div id="sheetDownloads" class="dl-list"></div>
       </div>
     </div>
   </div>
 
+  <!-- BOTTOM iOS TAB BAR -->
+  <nav class="ios-tabbar">
+    <button class="tab-item active" data-tab="today" data-title="Today">
+      <span class="icon">🌟</span>
+      <span>Today</span>
+    </button>
+    <button class="tab-item" data-tab="categories" data-title="Categories">
+      <span class="icon">🗂️</span>
+      <span>Categories</span>
+    </button>
+    <button class="tab-item" data-tab="search" data-title="Search">
+      <span class="icon">🔍</span>
+      <span>Search</span>
+    </button>
+    <button class="tab-item" data-tab="settings" data-title="Settings">
+      <span class="icon">⚙️</span>
+      <span>Settings</span>
+    </button>
+  </nav>
+
   <script>
-    // Your 5 Connected Websites
     const SITES = [
-      {
-        name: "GameDrive",
-        feed: "https://gamedrive.org/feed/",
-        searchUrl: q => `https://gamedrive.org/?s=${encodeURIComponent(q)}`
-      },
-      {
-        name: "SteamGG",
-        feed: "https://steamgg.net/feed/",
-        searchUrl: q => `https://steamgg.net/?s=${encodeURIComponent(q)}`
-      },
-      {
-        name: "AnkerGames",
-        feed: "https://ankergames.net/feed/",
-        searchUrl: q => `https://ankergames.net/search?q=${encodeURIComponent(q)}`
-      },
-      {
-        name: "WorldOfPCGames",
-        feed: "https://worldofpcgames.com/feed/",
-        searchUrl: q => `https://worldofpcgames.com/?s=${encodeURIComponent(q)}`
-      },
-      {
-        name: "SteamRIP",
-        feed: "https://steamrip.com/feed/",
-        searchUrl: q => `https://steamrip.com/?s=${encodeURIComponent(q)}`
-      }
+      { id: "gamedrive", name: "GameDrive", host: "gamedrive.org", feed: "https://gamedrive.org/feed/", search: q => `https://gamedrive.org/?s=${encodeURIComponent(q)}`, enabled: true },
+      { id: "steamgg", name: "SteamGG", host: "steamgg.net", feed: "https://steamgg.net/feed/", search: q => `https://steamgg.net/?s=${encodeURIComponent(q)}`, enabled: true },
+      { id: "ankergames", name: "AnkerGames", host: "ankergames.net", feed: "https://ankergames.net/feed/", search: q => `https://ankergames.net/search?q=${encodeURIComponent(q)}`, enabled: true },
+      { id: "worldofpcgames", name: "WorldOfPCGames", host: "worldofpcgames.com", feed: "https://worldofpcgames.com/feed/", search: q => `https://worldofpcgames.com/?s=${encodeURIComponent(q)}`, enabled: true },
+      { id: "steamrip", name: "SteamRIP", host: "steamrip.com", feed: "https://steamrip.com/feed/", search: q => `https://steamrip.com/?s=${encodeURIComponent(q)}`, enabled: true }
     ];
 
-    const UNIVERSAL_CATEGORIES = ["All", "Action", "RPG", "Open World", "Horror", "Sci-Fi", "Updates"];
+    const BASE_GENRES = ["All", "Action", "RPG", "Open World", "Horror", "Sci-Fi", "Anime", "Simulator", "Adult 18+"];
 
-    // Curated fallback + starter games while live RSS feeds sync
-    const fallbackGames = [
-      { title: "Cyberpunk 2077: Ultimate Edition", category: "RPG", source: "SteamRIP", updated: "Latest Release", directUrl: "https://steamrip.com/?s=Cyberpunk+2077" },
-      { title: "Grand Theft Auto V (v1.68)", category: "Open World", source: "GameDrive", updated: "Latest Release", directUrl: "https://gamedrive.org/?s=GTA+V" },
-      { title: "Silent Hill 2 Remake", category: "Horror", source: "SteamGG", updated: "Latest Release", directUrl: "https://steamgg.net/?s=Silent+Hill+2" },
-      { title: "God of War Ragnarök", category: "Action", source: "AnkerGames", updated: "Latest Release", directUrl: "https://ankergames.net/search?q=God+of+War" },
-      { title: "Ghostrunner 2", category: "Sci-Fi", source: "WorldOfPCGames", updated: "Latest Release", directUrl: "https://worldofpcgames.com/?s=Ghostrunner+2" },
-      { title: "The Witcher 3: Wild Hunt Complete", category: "RPG", source: "GameDrive", updated: "Latest Release", directUrl: "https://gamedrive.org/?s=Witcher+3" },
-      { title: "Resident Evil 4 Remake", category: "Horror", source: "SteamRIP", updated: "Latest Release", directUrl: "https://steamrip.com/?s=Resident+Evil+4" },
-      { title: "Elden Ring: Shadow of the Erdtree", category: "RPG", source: "SteamGG", updated: "Latest Release", directUrl: "https://steamgg.net/?s=Elden+Ring" }
+    const starterCatalog = [
+      { title: "Grand Theft Auto V", genre: "Open World", updated: "Featured Drop", directLinks: { GameDrive: "https://gamedrive.org/?s=GTA+V" } },
+      { title: "Cyberpunk 2077: Ultimate Edition", genre: "Sci-Fi", updated: "Latest Release", directLinks: { SteamRIP: "https://steamrip.com/?s=Cyberpunk+2077" } },
+      { title: "The Witcher 3: Wild Hunt", genre: "RPG", updated: "Complete Edition", directLinks: { GameDrive: "https://gamedrive.org/?s=Witcher+3" } },
+      { title: "Silent Hill 2 Remake", genre: "Horror", updated: "Hot Release", directLinks: { SteamGG: "https://steamgg.net/?s=Silent+Hill+2" } },
+      { title: "God of War (2018)", genre: "Action", updated: "Verified Build", directLinks: { AnkerGames: "https://ankergames.net/search?q=God+of+War" } },
+      { title: "Final Fantasy VII Remake Intergrade", genre: "RPG", updated: "Latest Patch", directLinks: { SteamRIP: "https://steamrip.com/?s=Final+Fantasy+VII" } },
+      { title: "Naruto Shippuden: Ultimate Ninja Storm 4", genre: "Anime", updated: "Full DLC", directLinks: { WorldOfPCGames: "https://worldofpcgames.com/?s=Naruto+Storm+4" } },
+      { title: "Ghostrunner 2", genre: "Sci-Fi", updated: "High Speed", directLinks: { SteamGG: "https://steamgg.net/?s=Ghostrunner+2" } },
+      { title: "Honey Select 2: Libido DX", genre: "Adult 18+", updated: "Uncensored 18+", directLinks: { SteamRIP: "https://steamrip.com/?s=Honey+Select" } },
+      { title: "Subverse (18+ Edition)", genre: "Adult 18+", updated: "Adult Sci-Fi", directLinks: { SteamGG: "https://steamgg.net/?s=Subverse" } }
     ];
 
-    let allGames = [...fallbackGames];
-    let state = { category: "All", query: "" };
-    const imageCache = {};
+    let mergedGames = [...starterCatalog];
+    let state = {
+      selectedGenre: "All",
+      showAdult: true,
+      query: ""
+    };
 
-    const catalog = document.getElementById("catalog");
-    const categoryChips = document.getElementById("categoryChips");
-    const searchInput = document.getElementById("searchInput");
-    const syncStatus = document.getElementById("syncStatus");
-    const gameCount = document.getElementById("gameCount");
-    const latestGame = document.getElementById("latestGame");
+    const imgCache = {};
 
-    // Clean up messy repack/version titles so image search finds the exact game
-    function cleanGameTitle(rawTitle) {
-      return rawTitle
+    function cleanName(raw) {
+      return String(raw || "")
         .replace(/\(.*?\)|\[.*?\]/g, "")
-        .replace(/v\d+(\.\d+)*|Build \d+|Free Download|Repack|Pre-Installed|FitGirl|DODI|SteamRIP/gi, "")
+        .replace(/v\d+(\.\d+)*|Build \d+|Free Download|Repack|Pre-Installed|FitGirl|DODI|SteamRIP|Multi\d+/gi, "")
         .split(/[-–—:|]/)[0]
         .trim();
     }
 
-    // Guess a universal category from title keywords
-    function detectCategory(title) {
+    function detectGenre(title) {
       const t = title.toLowerCase();
-      if (t.includes("resident evil") || t.includes("silent hill") || t.includes("horror") || t.includes("evil") || t.includes("outlast")) return "Horror";
-      if (t.includes("witcher") || t.includes("rpg") || t.includes("final fantasy") || t.includes("elden") || t.includes("dragon") || t.includes("tales of")) return "RPG";
-      if (t.includes("cyberpunk") || t.includes("space") || t.includes("halo") || t.includes("ghostrunner") || t.includes("star") || t.includes("metro")) return "Sci-Fi";
-      if (t.includes("gta") || t.includes("grand theft") || t.includes("assassin") || t.includes("far cry") || t.includes("red dead") || t.includes("horizon")) return "Open World";
-      if (t.includes("update") || t.includes("patch") || t.includes("hotfix")) return "Updates";
+      if (t.includes("18+") || t.includes("nsfw") || t.includes("uncensored") || t.includes("hentai") || t.includes("honey select") || t.includes("subverse") || t.includes("lust") || t.includes("sex")) return "Adult 18+";
+      if (t.includes("silent hill") || t.includes("resident evil") || t.includes("outlast") || t.includes("evil within") || t.includes("horror")) return "Horror";
+      if (t.includes("naruto") || t.includes("dragon ball") || t.includes("tales of") || t.includes("persona") || t.includes("anime") || t.includes("one piece")) return "Anime";
+      if (t.includes("witcher") || t.includes("final fantasy") || t.includes("elder scrolls") || t.includes("elden") || t.includes("rpg") || t.includes("baldur")) return "RPG";
+      if (t.includes("gta") || t.includes("assassin") || t.includes("far cry") || t.includes("red dead") || t.includes("sleeping dogs") || t.includes("watch dogs")) return "Open World";
+      if (t.includes("cyberpunk") || t.includes("ghostrunner") || t.includes("halo") || t.includes("metro") || t.includes("bioshock") || t.includes("starfield")) return "Sci-Fi";
+      if (t.includes("simulator") || t.includes("tycoon") || t.includes("sims") || t.includes("racing")) return "Simulator";
       return "Action";
     }
 
-    // Fetch real game cover & screenshots using public Steam/CheapShark/Wikipedia APIs
-    async function fetchGameImages(rawTitle) {
-      const clean = cleanGameTitle(rawTitle) || rawTitle;
-      if (imageCache[clean]) return imageCache[clean];
+    // Force link to open in User's Phone Browser
+    function openInPhoneBrowser(url) {
+      const win = window.open(url, "_system");
+      if (!win) window.open(url, "_blank", "noopener,noreferrer");
+    }
 
-      let cover = `https://picsum.photos/seed/${encodeURIComponent(clean)}/600/350`;
-      let shots = [
-        `https://picsum.photos/seed/${encodeURIComponent(clean + "1")}/500/300`,
-        `https://picsum.photos/seed/${encodeURIComponent(clean + "2")}/500/300`,
-        `https://picsum.photos/seed/${encodeURIComponent(clean + "3")}/500/300`
-      ];
+    // Fetch Random HD Game Covers & Screenshots from CheapShark / Steam CDN
+    async function getGameArtwork(rawTitle) {
+      const clean = cleanName(rawTitle) || rawTitle;
+      if (imgCache[clean]) return imgCache[clean];
+
+      const seed = encodeURIComponent(clean);
+      let art = {
+        icon: `https://picsum.photos/seed/${seed}-icon/300/300`,
+        banner: `https://picsum.photos/seed/${seed}-banner/800/450`,
+        shots: [
+          `https://picsum.photos/seed/${seed}-1/600/340`,
+          `https://picsum.photos/seed/${seed}-2/600/340`,
+          `https://picsum.photos/seed/${seed}-3/600/340`
+        ]
+      };
 
       try {
         const res = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(clean)}&limit=3`);
         const data = await res.json();
         if (data && data.length > 0) {
-          const steamAppId = data[0].steamAppID;
-          if (steamAppId) {
-            cover = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamAppId}/header.jpg`;
-            shots = [
-              `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamAppId}/capsule_616x353.jpg`,
-              `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${steamAppId}/header.jpg`,
-              data[0].thumb || cover
+          const appId = data[0].steamAppID;
+          if (appId) {
+            art.icon = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/capsule_616x353.jpg`;
+            art.banner = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`;
+            art.shots = [
+              `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`,
+              `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/capsule_616x353.jpg`,
+              data[0].thumb || art.banner
             ];
           } else if (data[0].thumb) {
-            cover = data[0].thumb;
+            art.icon = data[0].thumb;
+            art.banner = data[0].thumb;
           }
         }
-      } catch (e) {
-        // Fallback images stay active if offline
-      }
+      } catch (e) {}
 
-      imageCache[clean] = { cover, shots };
-      return imageCache[clean];
+      imgCache[clean] = art;
+      return art;
     }
 
-    // Pull live RSS feeds from all 5 sites via rss2json CORS proxy
-    async function syncLiveFeeds() {
-      syncStatus.textContent = "Syncing 5 websites...";
-      const fetched = [];
+    // Fetch & Deduplicate Games Across All 5 Websites into Single Game Entries
+    async function syncAllFeeds() {
+      const statusEl = document.getElementById("feedStatus");
+      statusEl.textContent = "Syncing 5 Sites...";
+      const map = new Map();
+
+      // Seed map with starter catalog
+      starterCatalog.forEach(item => {
+        const key = cleanName(item.title).toLowerCase();
+        map.set(key, { ...item, directLinks: { ...item.directLinks } });
+      });
+
+      const activeSites = SITES.filter(s => s.enabled);
 
       await Promise.allSettled(
-        SITES.map(async site => {
+        activeSites.map(async site => {
           try {
-            const proxyUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(site.feed)}`;
-            const res = await fetch(proxyUrl);
+            const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(site.feed)}`;
+            const res = await fetch(url);
             const data = await res.json();
             if (data && Array.isArray(data.items)) {
-              data.items.slice(0, 6).forEach(item => {
-                fetched.push({
-                  title: item.title,
-                  category: detectCategory(item.title),
-                  source: site.name,
-                  updated: (item.pubDate || "").split(" ")[0] || "New",
-                  directUrl: item.link,
-                  thumb: item.thumbnail || ""
-                });
+              data.items.slice(0, 8).forEach(post => {
+                const cleaned = cleanName(post.title);
+                const key = cleaned.toLowerCase();
+                if (!key) return;
+
+                if (map.has(key)) {
+                  const existing = map.get(key);
+                  existing.directLinks[site.name] = post.link;
+                } else {
+                  map.set(key, {
+                    title: cleaned || post.title,
+                    genre: detectGenre(post.title),
+                    updated: (post.pubDate || "").split(" ")[0] || "New Drop",
+                    directLinks: { [site.name]: post.link }
+                  });
+                }
               });
             }
-          } catch (err) {
-            console.warn("Feed sync skipped for", site.name);
-          }
+          } catch (e) {}
         })
       );
 
-      if (fetched.length > 0) {
-        allGames = [...fetched, ...fallbackGames];
-        syncStatus.textContent = `Live • ${fetched.length} new drops synced`;
-      } else {
-        syncStatus.textContent = "Universal Catalog Ready";
-      }
-
+      mergedGames = Array.from(map.values());
+      statusEl.textContent = `${mergedGames.length} Merged Games`;
       renderAll();
     }
 
-    function renderChips() {
-      categoryChips.innerHTML = UNIVERSAL_CATEGORIES.map(cat => `
-        <button class="chip ${state.category === cat ? "active" : ""}" data-cat="${cat}">
-          ${cat}
-        </button>
-      `).join("");
+    function visibleGames() {
+      return mergedGames.filter(g => state.showAdult || g.genre !== "Adult 18+");
     }
 
-    function getFilteredGames() {
-      const q = state.query.trim().toLowerCase();
+    function renderHero() {
+      const list = visibleGames();
+      const hero = list[0];
+      const spot = document.getElementById("heroSpot");
+      if (!hero) return;
 
-      const matches = allGames.filter(g => {
-        const catMatch = state.category === "All" || g.category === state.category;
-        const queryMatch = !q || g.title.toLowerCase().includes(q) || g.source.toLowerCase().includes(q);
-        return catMatch && queryMatch;
-      });
-
-      // If the user searches for ANY game not currently in the feed, generate a Universal Search Card automatically!
-      if (q && matches.length === 0) {
-        return [{
-          title: state.query.trim(),
-          category: detectCategory(state.query),
-          source: "All 5 Websites",
-          updated: "Universal Search",
-          directUrl: ""
-        }];
-      }
-
-      return matches;
-    }
-
-    async function renderCatalog() {
-      const list = getFilteredGames();
-      gameCount.textContent = allGames.length;
-      latestGame.textContent = allGames[0] ? allGames[0].title : "Ready";
-
-      catalog.innerHTML = list.map((g, idx) => `
-        <article class="card" data-index="${idx}">
-          <div class="cover">
-            <span class="badge">${g.category}</span>
-            <span class="source-tag">${g.source}</span>
-            <img id="img-${idx}" src="${g.thumb || `https://picsum.photos/seed/${encodeURIComponent(g.title)}/600/350`}" alt="${g.title}" loading="lazy" />
+      spot.innerHTML = `
+        <div class="hero-card" id="heroCardClick">
+          <img id="heroImg" src="https://picsum.photos/seed/${encodeURIComponent(hero.title)}/800/450" alt="${hero.title}" />
+          <div class="hero-overlay">
+            <span class="hero-tag">FEATURED ON ONLYGAMES • ${hero.genre}</span>
+            <h2>${hero.title}</h2>
+            <p>Tap to view screenshots & choose from 5 download servers</p>
           </div>
-          <div class="content">
-            <h3>${g.title}</h3>
-            <div class="meta">Updated: ${g.updated}</div>
-            <button class="open-btn" type="button">View Game & Downloads</button>
-          </div>
-        </article>
-      `).join("");
+        </div>
+      `;
 
-      // Upgrade card images with real game covers asynchronously
-      list.forEach(async (g, idx) => {
-        if (!g.thumb) {
-          const imgs = await fetchGameImages(g.title);
-          const imgEl = document.getElementById(`img-${idx}`);
-          if (imgEl && imgs.cover) imgEl.src = imgs.cover;
-        }
+      getGameArtwork(hero.title).then(art => {
+        const img = document.getElementById("heroImg");
+        if (img) img.src = art.banner;
       });
 
-      // Attach click events to open the Game Page Modal
-      catalog.querySelectorAll(".card").forEach((cardEl, idx) => {
-        cardEl.addEventListener("click", () => openGameModal(list[idx]));
-      });
+      document.getElementById("heroCardClick").addEventListener("click", () => openGameSheet(hero));
     }
 
-    async function openGameModal(game) {
-      const modal = document.getElementById("gameModal");
-      const modalCover = document.getElementById("modalCover");
-      const modalTitle = document.getElementById("modalTitle");
-      const modalMeta = document.getElementById("modalMeta");
-      const modalScreenshots = document.getElementById("modalScreenshots");
-      const modalSources = document.getElementById("modalSources");
-
-      const cleanName = cleanGameTitle(game.title) || game.title;
-      modalTitle.textContent = game.title;
-      modalMeta.textContent = `${game.category} • Spotted on ${game.source} • ${game.updated}`;
-
-      const imgs = await fetchGameImages(game.title);
-      modalCover.src = game.thumb || imgs.cover;
-
-      modalScreenshots.innerHTML = imgs.shots
-        .map(src => `<img src="${src}" alt="Screenshot" loading="lazy" />`)
-        .join("");
-
-      // Populate multi-website download buttons
-      modalSources.innerHTML = SITES.map(site => {
-        const isDirectSite = site.name === game.source && game.directUrl;
-        const targetUrl = isDirectSite ? game.directUrl : site.searchUrl(cleanName);
+    function buildAppRows(containerId, list) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = list.map((g, i) => {
+        const id = `${containerId}-img-${i}`;
+        const serverCount = Object.keys(g.directLinks || {}).length;
         return `
-          <a class="source-link ${isDirectSite ? "direct-hit" : ""}" href="${targetUrl}" target="_blank" rel="noopener noreferrer">
-            <span>${site.name} ${isDirectSite ? "⚡" : ""}</span>
-            <span>Download ↗</span>
-          </a>
+          <div class="app-row" data-idx="${i}">
+            <img id="${id}" class="app-icon" src="https://picsum.photos/seed/${encodeURIComponent(g.title)}/200/200" alt="${g.title}" loading="lazy" />
+            <div class="app-info">
+              <h4>${g.title}</h4>
+              <p>${g.genre} • ${serverCount > 0 ? `${serverCount} Direct + 5 Mirrors` : "5 Mirrors Ready"}</p>
+            </div>
+            <button class="get-btn" type="button">GET</button>
+          </div>
         `;
       }).join("");
 
-      modal.classList.add("open");
+      list.forEach((g, i) => {
+        getGameArtwork(g.title).then(art => {
+          const el = document.getElementById(`${containerId}-img-${i}`);
+          if (el) el.src = art.icon;
+        });
+      });
+
+      container.querySelectorAll(".app-row").forEach((row, i) => {
+        row.addEventListener("click", () => openGameSheet(list[i]));
+      });
+    }
+
+    function renderGenres() {
+      const bar = document.getElementById("genreBar");
+      const genres = BASE_GENRES.filter(g => state.showAdult || g !== "Adult 18+");
+
+      bar.innerHTML = genres.map(g => `
+        <button class="genre-pill ${g === "Adult 18+" ? "adult-pill" : ""} ${state.selectedGenre === g ? "active" : ""}" data-genre="${g}">
+          ${g === "Adult 18+" ? "🔞 Adult 18+" : g}
+        </button>
+      `).join("");
+
+      const filtered = visibleGames().filter(g => state.selectedGenre === "All" || g.genre === state.selectedGenre);
+      document.getElementById("selectedGenreTitle").textContent = state.selectedGenre;
+      document.getElementById("genreCount").textContent = `${filtered.length} Games`;
+      buildAppRows("categoryList", filtered);
+    }
+
+    function renderSearch() {
+      const q = state.query.trim().toLowerCase();
+      let results = visibleGames().filter(g => g.title.toLowerCase().includes(q) || g.genre.toLowerCase().includes(q));
+
+      if (q && results.length === 0) {
+        results = [{
+          title: state.query.trim(),
+          genre: detectGenre(state.query),
+          updated: "Universal Search",
+          directLinks: {}
+        }];
+      }
+
+      buildAppRows("searchList", results);
+    }
+
+    function renderSettings() {
+      const box = document.getElementById("siteToggles");
+      box.innerHTML = SITES.map((s, idx) => `
+        <div class="settings-item">
+          <div>
+            <strong>${s.name}</strong>
+            <span>${s.host}</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" data-site-idx="${idx}" ${s.enabled ? "checked" : ""} />
+            <span class="slider"></span>
+          </label>
+        </div>
+      `).join("");
+
+      box.querySelectorAll("[data-site-idx]").forEach(input => {
+        input.addEventListener("change", e => {
+          const i = Number(e.target.dataset.siteIdx);
+          SITES[i].enabled = e.target.checked;
+        });
+      });
+    }
+
+    async function openGameSheet(game) {
+      const sheet = document.getElementById("gameSheet");
+      document.getElementById("sheetTitle").textContent = game.title;
+      document.getElementById("sheetMeta").textContent = `${game.genre} • ${game.updated}`;
+
+      const art = await getGameArtwork(game.title);
+      document.getElementById("sheetBanner").src = art.banner;
+      document.getElementById("sheetIcon").src = art.icon;
+
+      document.getElementById("sheetShots").innerHTML = art.shots
+        .map(src => `<img src="${src}" alt="Screenshot" />`)
+        .join("");
+
+      const clean = cleanName(game.title) || game.title;
+      const dlBox = document.getElementById("sheetDownloads");
+
+      dlBox.innerHTML = SITES.filter(s => s.enabled).map(site => {
+        const directUrl = game.directLinks && game.directLinks[site.name];
+        const finalUrl = directUrl || site.search(clean);
+        return `
+          <button class="dl-btn ${directUrl ? "matched" : ""}" data-url="${finalUrl}" type="button">
+            <div>
+              <div>${site.name} ${directUrl ? "⚡ Direct Feed Match" : ""}</div>
+              <div style="font-size:11px; color:var(--muted); margin-top:2px;">${site.host}</div>
+            </div>
+            <span class="badge-pill">BROWSER ↗</span>
+          </button>
+        `;
+      }).join("");
+
+      dlBox.querySelectorAll(".dl-btn").forEach(btn => {
+        btn.addEventListener("click", () => openInPhoneBrowser(btn.dataset.url));
+      });
+
+      sheet.classList.add("open");
     }
 
     function renderAll() {
-      renderChips();
-      renderCatalog();
+      renderHero();
+      buildAppRows("latestList", visibleGames());
+      renderGenres();
+      renderSearch();
+      renderSettings();
     }
 
-    categoryChips.addEventListener("click", e => {
-      const btn = e.target.closest("[data-cat]");
-      if (!btn) return;
-      state.category = btn.dataset.cat;
+    // Tab Navigation
+    document.querySelectorAll(".tab-item").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-item").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-view").forEach(v => v.classList.remove("active"));
+
+        btn.classList.add("active");
+        document.getElementById(`tab-${btn.dataset.tab}`).classList.add("active");
+        document.getElementById("headerTitle").textContent = btn.dataset.title;
+      });
+    });
+
+    document.getElementById("genreBar").addEventListener("click", e => {
+      const pill = e.target.closest("[data-genre]");
+      if (!pill) return;
+      state.selectedGenre = pill.dataset.genre;
+      renderGenres();
+    });
+
+    document.getElementById("searchInput").addEventListener("input", e => {
+      state.query = e.target.value;
+      renderSearch();
+    });
+
+    document.getElementById("adultToggle").addEventListener("change", e => {
+      state.showAdult = e.target.checked;
+      if (!state.showAdult && state.selectedGenre === "Adult 18+") {
+        state.selectedGenre = "All";
+      }
       renderAll();
     });
 
-    searchInput.addEventListener("input", () => {
-      state.query = searchInput.value;
-      renderCatalog();
-    });
-
-    document.getElementById("refreshBtn").addEventListener("click", syncLiveFeeds);
-    document.getElementById("closeModalBtn").addEventListener("click", () => {
-      document.getElementById("gameModal").classList.remove("open");
-    });
-    document.getElementById("gameModal").addEventListener("click", e => {
-      if (e.target.id === "gameModal") e.target.classList.remove("open");
+    document.getElementById("syncBtn").addEventListener("click", syncAllFeeds);
+    document.getElementById("closeSheetBtn").addEventListener("click", () => {
+      document.getElementById("gameSheet").classList.remove("open");
     });
 
     renderAll();
-    syncLiveFeeds();
+    syncAllFeeds();
   </script>
 </body>
 </html>
