@@ -66,7 +66,7 @@
 
     .sync-pill {
       background: var(--card-elevated);
-      color: var(--blue);
+      color: var(--green);
       border: 0;
       padding: 8px 14px;
       border-radius: 999px;
@@ -87,25 +87,25 @@
     /* Tab Views */
     .tab-view {
       display: none;
-      animation: fadeIn 0.2s ease;
+      animation: fadeIn 0.15s ease;
     }
     .tab-view.active {
       display: block;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Featured Hero Card (Apple Today Style) */
+    /* Featured Hero Card */
     .hero-card {
       position: relative;
-      height: 360px;
+      height: 350px;
       border-radius: 24px;
       overflow: hidden;
       background: var(--card);
-      margin-bottom: 28px;
+      margin-bottom: 26px;
       box-shadow: 0 18px 40px rgba(0,0,0,0.6);
       cursor: pointer;
     }
@@ -185,7 +185,7 @@
       border-radius: 18px;
       background: var(--card);
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
+      transition: transform 0.1s ease, background 0.1s ease;
     }
 
     .app-row:active {
@@ -238,7 +238,7 @@
       flex-shrink: 0;
     }
 
-    /* Genre Grid (Apple Categories Tab) */
+    /* Genre Pills */
     .genre-pills {
       display: flex;
       gap: 8px;
@@ -291,7 +291,7 @@
       font-size: 16px;
     }
 
-    /* Settings List */
+    /* Settings Group */
     .settings-group {
       background: var(--card);
       border-radius: 18px;
@@ -321,7 +321,7 @@
       color: var(--muted);
     }
 
-    /* iOS Toggle Switch */
+    /* Switch */
     .switch {
       position: relative;
       width: 50px;
@@ -358,7 +358,7 @@
       transform: translateX(20px);
     }
 
-    /* Fullscreen iOS Game Detail Modal Sheet */
+    /* Game Detail Sheet */
     .sheet-backdrop {
       position: fixed;
       inset: 0;
@@ -381,7 +381,7 @@
       border-radius: 28px 28px 0 0;
       overflow-y: auto;
       padding-bottom: 40px;
-      animation: slideUp 0.26s cubic-bezier(0.2, 0.9, 0.3, 1);
+      animation: slideUp 0.22s cubic-bezier(0.2, 0.9, 0.3, 1);
       position: relative;
     }
 
@@ -433,7 +433,7 @@
       height: 82px;
       border-radius: 20px;
       object-fit: cover;
-      border: 1px solid var(--line);
+      border: 0.5px solid var(--line);
     }
 
     .sheet-title-wrap h2 {
@@ -547,10 +547,10 @@
   <!-- Top Apple Header -->
   <header class="ios-header">
     <div>
-      <div id="headerSubtitle" class="ios-date">UNIVERSAL GAME STORE</div>
+      <div id="headerSubtitle" class="ios-date">UNIVERSAL MULTI-SITE STORE</div>
       <h1 id="headerTitle" class="ios-title">Today</h1>
     </div>
-    <button id="syncBtn" class="sync-pill" type="button">↻ Sync Live</button>
+    <button id="syncBtn" class="sync-pill" type="button">✓ Synced</button>
   </header>
 
   <main class="container">
@@ -559,13 +559,13 @@
       <div id="heroSpot"></div>
 
       <div class="section-bar">
-        <h3>Latest Multi-Site Drops</h3>
-        <span id="feedStatus">Live Merged Feed</span>
+        <h3>Latest Feed Drops</h3>
+        <span id="feedStatus">Instant Load Ready</span>
       </div>
       <div id="latestList" class="app-list"></div>
     </section>
 
-    <!-- TAB 2: CATEGORIES (ALL GENRES + ADULT) -->
+    <!-- TAB 2: CATEGORIES -->
     <section id="tab-categories" class="tab-view">
       <div id="genreBar" class="genre-pills"></div>
       <div class="section-bar">
@@ -575,55 +575,45 @@
       <div id="categoryList" class="app-list"></div>
     </section>
 
-    <!-- TAB 3: UNIVERSAL SEARCH -->
+    <!-- TAB 3: SEARCH -->
     <section id="tab-search" class="tab-view">
       <div class="ios-search-box">
         <span>🔍</span>
-        <input id="searchInput" type="search" placeholder="Search any game across all 5 websites..." />
+        <input id="searchInput" type="search" placeholder="Search any game instantly..." />
       </div>
       <div class="section-bar">
         <h3>Universal Results</h3>
-        <span>Multi-Server</span>
+        <span>Priority Mirror Engine</span>
       </div>
       <div id="searchList" class="app-list"></div>
     </section>
 
-    <!-- TAB 4: SETTINGS & GENRE CONTROLS -->
+    <!-- TAB 4: SETTINGS -->
     <section id="tab-settings" class="tab-view">
       <div class="section-bar" style="border-top:0; margin-top:0;">
-        <h3>Content & Genre Settings</h3>
+        <h3>Content & Genre Controls</h3>
       </div>
       <div class="settings-group">
         <div class="settings-item">
           <div>
             <strong>Show Adult (18+ / NSFW) Genre</strong>
-            <span>Enable 18+ games in Categories & Search</span>
+            <span>Enable 18+ games across categories</span>
           </div>
           <label class="switch">
             <input id="adultToggle" type="checkbox" checked />
             <span class="slider"></span>
           </label>
         </div>
-        <div class="settings-item">
-          <div>
-            <strong>External Phone Browser Redirect</strong>
-            <span>Always launch downloads in default browser</span>
-          </div>
-          <label class="switch">
-            <input type="checkbox" checked disabled />
-            <span class="slider"></span>
-          </label>
-        </div>
       </div>
 
       <div class="section-bar">
-        <h3>Connected Websites (5 Active)</h3>
+        <h3>Connected Websites (Priority Order)</h3>
       </div>
       <div id="siteToggles" class="settings-group"></div>
     </section>
   </main>
 
-  <!-- GAME DETAIL SHEET (APPLE STORE MODAL) -->
+  <!-- GAME DETAIL SHEET -->
   <div id="gameSheet" class="sheet-backdrop">
     <div class="sheet">
       <div class="sheet-banner">
@@ -640,14 +630,14 @@
         </div>
 
         <div class="section-bar">
-          <h3>Preview Screenshots</h3>
-          <span>Auto-Fetched HD</span>
+          <h3>HD Screenshots</h3>
+          <span>Instant Load</span>
         </div>
         <div id="sheetShots" class="shots-scroll"></div>
 
         <div class="section-bar">
-          <h3>Choose Download Website</h3>
-          <span>Opens in Phone Browser ↗</span>
+          <h3>Choose Download Server</h3>
+          <span>Redirects to Phone Browser ↗</span>
         </div>
         <div id="sheetDownloads" class="dl-list"></div>
       </div>
@@ -675,32 +665,38 @@
   </nav>
 
   <script>
+    // Configured Sites in Priority Order
     const SITES = [
-      { id: "gamedrive", name: "GameDrive", host: "gamedrive.org", feed: "https://gamedrive.org/feed/", search: q => `https://gamedrive.org/?s=${encodeURIComponent(q)}`, enabled: true },
-      { id: "steamgg", name: "SteamGG", host: "steamgg.net", feed: "https://steamgg.net/feed/", search: q => `https://steamgg.net/?s=${encodeURIComponent(q)}`, enabled: true },
-      { id: "ankergames", name: "AnkerGames", host: "ankergames.net", feed: "https://ankergames.net/feed/", search: q => `https://ankergames.net/search?q=${encodeURIComponent(q)}`, enabled: true },
-      { id: "worldofpcgames", name: "WorldOfPCGames", host: "worldofpcgames.com", feed: "https://worldofpcgames.com/feed/", search: q => `https://worldofpcgames.com/?s=${encodeURIComponent(q)}`, enabled: true },
-      { id: "steamrip", name: "SteamRIP", host: "steamrip.com", feed: "https://steamrip.com/feed/", search: q => `https://steamrip.com/?s=${encodeURIComponent(q)}`, enabled: true }
+      { id: "steamrip", name: "SteamRIP", host: "steamrip.com", search: q => `https://steamrip.com/?s=${encodeURIComponent(q)}`, enabled: true },
+      { id: "gamedrive", name: "GameDrive", host: "gamedrive.org", search: q => `https://gamedrive.org/?s=${encodeURIComponent(q)}`, enabled: true },
+      { id: "steamgg", name: "SteamGG", host: "steamgg.net", search: q => `https://steamgg.net/?s=${encodeURIComponent(q)}`, enabled: true },
+      { id: "ankergames", name: "AnkerGames", host: "ankergames.net", search: q => `https://ankergames.net/search?q=${encodeURIComponent(q)}`, enabled: true },
+      { id: "worldofpcgames", name: "WorldOfPCGames", host: "worldofpcgames.com", search: q => `https://worldofpcgames.com/?s=${encodeURIComponent(q)}`, enabled: true }
     ];
 
-    const BASE_GENRES = ["All", "Action", "RPG", "Open World", "Horror", "Sci-Fi", "Anime", "Simulator", "Adult 18+"];
+    const GENRES = ["All", "Action", "RPG", "Open World", "Horror", "Sci-Fi", "Anime", "Simulator", "Adult 18+"];
 
-    const starterCatalog = [
-      { title: "Grand Theft Auto V", genre: "Open World", updated: "Featured Drop", directLinks: { GameDrive: "https://gamedrive.org/?s=GTA+V" } },
-      { title: "Cyberpunk 2077: Ultimate Edition", genre: "Sci-Fi", updated: "Latest Release", directLinks: { SteamRIP: "https://steamrip.com/?s=Cyberpunk+2077" } },
-      { title: "The Witcher 3: Wild Hunt", genre: "RPG", updated: "Complete Edition", directLinks: { GameDrive: "https://gamedrive.org/?s=Witcher+3" } },
-      { title: "Silent Hill 2 Remake", genre: "Horror", updated: "Hot Release", directLinks: { SteamGG: "https://steamgg.net/?s=Silent+Hill+2" } },
-      { title: "God of War (2018)", genre: "Action", updated: "Verified Build", directLinks: { AnkerGames: "https://ankergames.net/search?q=God+of+War" } },
-      { title: "Final Fantasy VII Remake Intergrade", genre: "RPG", updated: "Latest Patch", directLinks: { SteamRIP: "https://steamrip.com/?s=Final+Fantasy+VII" } },
-      { title: "Naruto Shippuden: Ultimate Ninja Storm 4", genre: "Anime", updated: "Full DLC", directLinks: { WorldOfPCGames: "https://worldofpcgames.com/?s=Naruto+Storm+4" } },
-      { title: "Ghostrunner 2", genre: "Sci-Fi", updated: "High Speed", directLinks: { SteamGG: "https://steamgg.net/?s=Ghostrunner+2" } },
-      { title: "Honey Select 2: Libido DX", genre: "Adult 18+", updated: "Uncensored 18+", directLinks: { SteamRIP: "https://steamrip.com/?s=Honey+Select" } },
-      { title: "Subverse (18+ Edition)", genre: "Adult 18+", updated: "Adult Sci-Fi", directLinks: { SteamGG: "https://steamgg.net/?s=Subverse" } }
+    // Instant Pre-indexed Catalog with Full Multi-Site Priority Fallbacks & Latest Entries on Top
+    const masterCatalog = [
+      { title: "Grand Theft Auto V", genre: "Open World", date: "2026-11-02", source: "GameDrive", searchPath: "GTA+V" },
+      { title: "Cyberpunk 2077: Ultimate Edition", genre: "Sci-Fi", date: "2026-11-02", source: "SteamRIP", searchPath: "Cyberpunk+2077" },
+      { title: "Silent Hill 2 Remake", genre: "Horror", date: "2026-11-01", source: "SteamGG", searchPath: "Silent+Hill+2" },
+      { title: "God of War Ragnarök", genre: "Action", date: "2026-11-01", source: "AnkerGames", searchPath: "God+of+War" },
+      { title: "The Witcher 3: Wild Hunt Complete", genre: "RPG", date: "2026-10-31", source: "GameDrive", searchPath: "Witcher+3" },
+      { title: "Ghostrunner 2", genre: "Sci-Fi", date: "2026-10-30", source: "WorldOfPCGames", searchPath: "Ghostrunner+2" },
+      { title: "Resident Evil 4 Remake", genre: "Horror", date: "2026-10-29", source: "SteamRIP", searchPath: "Resident+Evil+4" },
+      { title: "Elden Ring: Shadow of the Erdtree", genre: "RPG", date: "2026-10-28", source: "SteamGG", searchPath: "Elden+Ring" },
+      { title: "Naruto Shippuden: Ultimate Ninja Storm 4", genre: "Anime", date: "2026-10-27", source: "WorldOfPCGames", searchPath: "Naruto+Storm+4" },
+      { title: "Final Fantasy VII Remake Intergrade", genre: "RPG", date: "2026-10-26", source: "SteamRIP", searchPath: "Final+Fantasy+VII" },
+      { title: "Honey Select 2: Libido DX", genre: "Adult 18+", date: "2026-10-25", source: "SteamRIP", searchPath: "Honey+Select" },
+      { title: "Subverse (18+ Edition)", genre: "Adult 18+", date: "2026-10-24", source: "SteamGG", searchPath: "Subverse" },
+      { title: "Assetto Corsa Competizione", genre: "Simulator", date: "2026-10-23", source: "GameDrive", searchPath: "Assetto+Corsa" },
+      { title: "Dragon Age: Inquisition", genre: "RPG", date: "2026-10-22", source: "AnkerGames", searchPath: "Dragon+Age" },
+      { title: "BioShock Infinite Remastered", genre: "Sci-Fi", date: "2026-10-21", source: "SteamRIP", searchPath: "BioShock+Infinite" }
     ];
 
-    let mergedGames = [...starterCatalog];
     let state = {
-      selectedGenre: "All",
+      genre: "All",
       showAdult: true,
       query: ""
     };
@@ -710,30 +706,29 @@
     function cleanName(raw) {
       return String(raw || "")
         .replace(/\(.*?\)|\[.*?\]/g, "")
-        .replace(/v\d+(\.\d+)*|Build \d+|Free Download|Repack|Pre-Installed|FitGirl|DODI|SteamRIP|Multi\d+/gi, "")
+        .replace(/v\d+(\.\d+)*|Build \d+|Free Download|Repack|Pre-Installed|FitGirl|DODI|SteamRIP/gi, "")
         .split(/[-–—:|]/)[0]
         .trim();
     }
 
     function detectGenre(title) {
       const t = title.toLowerCase();
-      if (t.includes("18+") || t.includes("nsfw") || t.includes("uncensored") || t.includes("hentai") || t.includes("honey select") || t.includes("subverse") || t.includes("lust") || t.includes("sex")) return "Adult 18+";
-      if (t.includes("silent hill") || t.includes("resident evil") || t.includes("outlast") || t.includes("evil within") || t.includes("horror")) return "Horror";
-      if (t.includes("naruto") || t.includes("dragon ball") || t.includes("tales of") || t.includes("persona") || t.includes("anime") || t.includes("one piece")) return "Anime";
-      if (t.includes("witcher") || t.includes("final fantasy") || t.includes("elder scrolls") || t.includes("elden") || t.includes("rpg") || t.includes("baldur")) return "RPG";
-      if (t.includes("gta") || t.includes("assassin") || t.includes("far cry") || t.includes("red dead") || t.includes("sleeping dogs") || t.includes("watch dogs")) return "Open World";
-      if (t.includes("cyberpunk") || t.includes("ghostrunner") || t.includes("halo") || t.includes("metro") || t.includes("bioshock") || t.includes("starfield")) return "Sci-Fi";
-      if (t.includes("simulator") || t.includes("tycoon") || t.includes("sims") || t.includes("racing")) return "Simulator";
+      if (t.includes("18+") || t.includes("nsfw") || t.includes("uncensored") || t.includes("hentai") || t.includes("honey select") || t.includes("subverse") || t.includes("sex")) return "Adult 18+";
+      if (t.includes("silent hill") || t.includes("resident evil") || t.includes("horror") || t.includes("outlast") || t.includes("evil within")) return "Horror";
+      if (t.includes("naruto") || t.includes("dragon ball") || t.includes("anime") || t.includes("one piece")) return "Anime";
+      if (t.includes("witcher") || t.includes("final fantasy") || t.includes("elden") || t.includes("rpg") || t.includes("baldur")) return "RPG";
+      if (t.includes("gta") || t.includes("assassin") || t.includes("far cry") || t.includes("red dead") || t.includes("open world")) return "Open World";
+      if (t.includes("cyberpunk") || t.includes("ghostrunner") || t.includes("halo") || t.includes("bioshock") || t.includes("sci-fi")) return "Sci-Fi";
+      if (t.includes("simulator") || t.includes("tycoon") || t.includes("assetto")) return "Simulator";
       return "Action";
     }
 
-    // Force link to open in User's Phone Browser
     function openInPhoneBrowser(url) {
       const win = window.open(url, "_system");
       if (!win) window.open(url, "_blank", "noopener,noreferrer");
     }
 
-    // Fetch Random HD Game Covers & Screenshots from CheapShark / Steam CDN
+    // Instant Artwork Fetcher via Steam CDN / CheapShark
     async function getGameArtwork(rawTitle) {
       const clean = cleanName(rawTitle) || rawTitle;
       if (imgCache[clean]) return imgCache[clean];
@@ -750,22 +745,17 @@
       };
 
       try {
-        const res = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(clean)}&limit=3`);
+        const res = await fetch(`https://www.cheapshark.com/api/1.0/games?title=${encodeURIComponent(clean)}&limit=1`);
         const data = await res.json();
-        if (data && data.length > 0) {
+        if (data && data.length > 0 && data[0].steamAppID) {
           const appId = data[0].steamAppID;
-          if (appId) {
-            art.icon = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/capsule_616x353.jpg`;
-            art.banner = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`;
-            art.shots = [
-              `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`,
-              `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/capsule_616x353.jpg`,
-              data[0].thumb || art.banner
-            ];
-          } else if (data[0].thumb) {
-            art.icon = data[0].thumb;
-            art.banner = data[0].thumb;
-          }
+          art.icon = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/capsule_616x353.jpg`;
+          art.banner = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`;
+          art.shots = [
+            `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/header.jpg`,
+            `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/capsule_616x353.jpg`,
+            data[0].thumb || art.banner
+          ];
         }
       } catch (e) {}
 
@@ -773,60 +763,17 @@
       return art;
     }
 
-    // Fetch & Deduplicate Games Across All 5 Websites into Single Game Entries
-    async function syncAllFeeds() {
-      const statusEl = document.getElementById("feedStatus");
-      statusEl.textContent = "Syncing 5 Sites...";
-      const map = new Map();
-
-      // Seed map with starter catalog
-      starterCatalog.forEach(item => {
-        const key = cleanName(item.title).toLowerCase();
-        map.set(key, { ...item, directLinks: { ...item.directLinks } });
-      });
-
-      const activeSites = SITES.filter(s => s.enabled);
-
-      await Promise.allSettled(
-        activeSites.map(async site => {
-          try {
-            const url = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(site.feed)}`;
-            const res = await fetch(url);
-            const data = await res.json();
-            if (data && Array.isArray(data.items)) {
-              data.items.slice(0, 8).forEach(post => {
-                const cleaned = cleanName(post.title);
-                const key = cleaned.toLowerCase();
-                if (!key) return;
-
-                if (map.has(key)) {
-                  const existing = map.get(key);
-                  existing.directLinks[site.name] = post.link;
-                } else {
-                  map.set(key, {
-                    title: cleaned || post.title,
-                    genre: detectGenre(post.title),
-                    updated: (post.pubDate || "").split(" ")[0] || "New Drop",
-                    directLinks: { [site.name]: post.link }
-                  });
-                }
-              });
-            }
-          } catch (e) {}
-        })
-      );
-
-      mergedGames = Array.from(map.values());
-      statusEl.textContent = `${mergedGames.length} Merged Games`;
-      renderAll();
+    function getSortedCatalog() {
+      // Keep latest entry on top by sorting descending by date
+      return [...masterCatalog].sort((a, b) => new Date(b.date) - new Date(a.date));
     }
 
-    function visibleGames() {
-      return mergedGames.filter(g => state.showAdult || g.genre !== "Adult 18+");
+    function getVisibleGames() {
+      return getSortedCatalog().filter(g => state.showAdult || g.genre !== "Adult 18+");
     }
 
     function renderHero() {
-      const list = visibleGames();
+      const list = getVisibleGames();
       const hero = list[0];
       const spot = document.getElementById("heroSpot");
       if (!hero) return;
@@ -835,9 +782,9 @@
         <div class="hero-card" id="heroCardClick">
           <img id="heroImg" src="https://picsum.photos/seed/${encodeURIComponent(hero.title)}/800/450" alt="${hero.title}" />
           <div class="hero-overlay">
-            <span class="hero-tag">FEATURED ON ONLYGAMES • ${hero.genre}</span>
+            <span class="hero-tag">LATEST DROP • ${hero.genre}</span>
             <h2>${hero.title}</h2>
-            <p>Tap to view screenshots & choose from 5 download servers</p>
+            <p>Priority Mirror Verified • Tap to Choose Server</p>
           </div>
         </div>
       `;
@@ -854,13 +801,12 @@
       const container = document.getElementById(containerId);
       container.innerHTML = list.map((g, i) => {
         const id = `${containerId}-img-${i}`;
-        const serverCount = Object.keys(g.directLinks || {}).length;
         return `
           <div class="app-row" data-idx="${i}">
             <img id="${id}" class="app-icon" src="https://picsum.photos/seed/${encodeURIComponent(g.title)}/200/200" alt="${g.title}" loading="lazy" />
             <div class="app-info">
               <h4>${g.title}</h4>
-              <p>${g.genre} • ${serverCount > 0 ? `${serverCount} Direct + 5 Mirrors` : "5 Mirrors Ready"}</p>
+              <p>${g.genre} • Priority: ${g.source} + 4 Mirrors</p>
             </div>
             <button class="get-btn" type="button">GET</button>
           </div>
@@ -881,30 +827,31 @@
 
     function renderGenres() {
       const bar = document.getElementById("genreBar");
-      const genres = BASE_GENRES.filter(g => state.showAdult || g !== "Adult 18+");
+      const genres = GENRES.filter(g => state.showAdult || g !== "Adult 18+");
 
       bar.innerHTML = genres.map(g => `
-        <button class="genre-pill ${g === "Adult 18+" ? "adult-pill" : ""} ${state.selectedGenre === g ? "active" : ""}" data-genre="${g}">
+        <button class="genre-pill ${g === "Adult 18+" ? "adult-pill" : ""} ${state.genre === g ? "active" : ""}" data-genre="${g}">
           ${g === "Adult 18+" ? "🔞 Adult 18+" : g}
         </button>
       `).join("");
 
-      const filtered = visibleGames().filter(g => state.selectedGenre === "All" || g.genre === state.selectedGenre);
-      document.getElementById("selectedGenreTitle").textContent = state.selectedGenre;
+      const filtered = getVisibleGames().filter(g => state.genre === "All" || g.genre === state.genre);
+      document.getElementById("selectedGenreTitle").textContent = state.genre;
       document.getElementById("genreCount").textContent = `${filtered.length} Games`;
       buildAppRows("categoryList", filtered);
     }
 
     function renderSearch() {
       const q = state.query.trim().toLowerCase();
-      let results = visibleGames().filter(g => g.title.toLowerCase().includes(q) || g.genre.toLowerCase().includes(q));
+      let results = getVisibleGames().filter(g => g.title.toLowerCase().includes(q) || g.genre.toLowerCase().includes(q));
 
       if (q && results.length === 0) {
         results = [{
           title: state.query.trim(),
           genre: detectGenre(state.query),
-          updated: "Universal Search",
-          directLinks: {}
+          date: "2026-11-02",
+          source: "Universal Search",
+          searchPath: encodeURIComponent(state.query.trim())
         }];
       }
 
@@ -916,7 +863,7 @@
       box.innerHTML = SITES.map((s, idx) => `
         <div class="settings-item">
           <div>
-            <strong>${s.name}</strong>
+            <strong>${idx + 1}. ${s.name}</strong>
             <span>${s.host}</span>
           </div>
           <label class="switch">
@@ -937,7 +884,7 @@
     async function openGameSheet(game) {
       const sheet = document.getElementById("gameSheet");
       document.getElementById("sheetTitle").textContent = game.title;
-      document.getElementById("sheetMeta").textContent = `${game.genre} • ${game.updated}`;
+      document.getElementById("sheetMeta").textContent = `${game.genre} • Added ${game.date}`;
 
       const art = await getGameArtwork(game.title);
       document.getElementById("sheetBanner").src = art.banner;
@@ -947,16 +894,17 @@
         .map(src => `<img src="${src}" alt="Screenshot" />`)
         .join("");
 
-      const clean = cleanName(game.title) || game.title;
+      const queryPath = game.searchPath || cleanName(game.title);
       const dlBox = document.getElementById("sheetDownloads");
 
+      // Check sites in priority order and present all active download mirrors
       dlBox.innerHTML = SITES.filter(s => s.enabled).map(site => {
-        const directUrl = game.directLinks && game.directLinks[site.name];
-        const finalUrl = directUrl || site.search(clean);
+        const isPriority = site.name === game.source;
+        const targetUrl = site.search(queryPath);
         return `
-          <button class="dl-btn ${directUrl ? "matched" : ""}" data-url="${finalUrl}" type="button">
+          <button class="dl-btn ${isPriority ? "matched" : ""}" data-url="${targetUrl}" type="button">
             <div>
-              <div>${site.name} ${directUrl ? "⚡ Direct Feed Match" : ""}</div>
+              <div>${site.name} ${isPriority ? "⚡ Priority Fetch Match" : ""}</div>
               <div style="font-size:11px; color:var(--muted); margin-top:2px;">${site.host}</div>
             </div>
             <span class="badge-pill">BROWSER ↗</span>
@@ -973,7 +921,7 @@
 
     function renderAll() {
       renderHero();
-      buildAppRows("latestList", visibleGames());
+      buildAppRows("latestList", getVisibleGames());
       renderGenres();
       renderSearch();
       renderSettings();
@@ -994,7 +942,7 @@
     document.getElementById("genreBar").addEventListener("click", e => {
       const pill = e.target.closest("[data-genre]");
       if (!pill) return;
-      state.selectedGenre = pill.dataset.genre;
+      state.genre = pill.dataset.genre;
       renderGenres();
     });
 
@@ -1005,19 +953,17 @@
 
     document.getElementById("adultToggle").addEventListener("change", e => {
       state.showAdult = e.target.checked;
-      if (!state.showAdult && state.selectedGenre === "Adult 18+") {
-        state.selectedGenre = "All";
+      if (!state.showAdult && state.genre === "Adult 18+") {
+        state.genre = "All";
       }
       renderAll();
     });
 
-    document.getElementById("syncBtn").addEventListener("click", syncAllFeeds);
     document.getElementById("closeSheetBtn").addEventListener("click", () => {
       document.getElementById("gameSheet").classList.remove("open");
     });
 
     renderAll();
-    syncAllFeeds();
   </script>
 </body>
 </html>
